@@ -29,11 +29,11 @@ Let's categorize our GitOps patterns into separate ares to make them easier to g
 ### Operator deployment
 
 * **Hub and Spoke** [^1][^2] 1 Operator : n Clusters  
-![Hube and spoke](https://github.com/cloudogu/gitops-talks/blob/2c6c81d24e9168dcf6fd208a3ddd00040a929d41/images/deployment-hub-and-spoke.svg)
+![Hube and spoke](https://github.com/cloudogu/gitops-talks/blob/1744c1d/images/deployment-hub-and-spoke.svg)
 * **Standalone** [^1]: 1 Operator : 1 Cluster  
-![Standalone](https://github.com/cloudogu/gitops-talks/blob/2c6c81d24e9168dcf6fd208a3ddd00040a929d41/images/deployment-standalone.svg)
+![Standalone](https://github.com/cloudogu/gitops-talks/blob/1744c1d/images/deployment-standalone.svg)
 * **Namespaced** [^3]: n Operators : 1 Cluster  
-![Namespaced](https://github.com/cloudogu/gitops-talks/blob/2c6c81d24e9168dcf6fd208a3ddd00040a929d41/images/deployment-namespaced.svg)
+![Namespaced](https://github.com/cloudogu/gitops-talks/blob/1744c1d/images/deployment-namespaced.svg)
 * **Split-Instance** [^1]: 1 Operator : n Clusters; components split between management and target clusters
 
 
@@ -71,8 +71,8 @@ Let's categorize our GitOps patterns into separate ares to make them easier to g
     * via CRD such as `HelmRelease` (Flux) or `Application` (ArgoCD)
     * via Umbrella Chart[^11]
 * **Global Environments** vs **Environment per App**[^3]  
-  ![Global Envs](https://github.com/cloudogu/gitops-talks/blob/2c6c81/images/global-environments.svg)
-  ![Env per app](https://github.com/cloudogu/gitops-talks/blob/2c6c81/images/environment-per-app.svg)
+  ![Global Envs](https://github.com/cloudogu/gitops-talks/blob/1744c1d/images/global-environments.svg)
+  ![Env per app](https://github.com/cloudogu/gitops-talks/blob/1744c1d/images/environment-per-app.svg)
 
 
 ### Wiring
@@ -102,7 +102,7 @@ See also [^3].
   * Mixed repo patterns
   * ArgoCD **and** Flux examples
 
-![](https://github.com/cloudogu/gitops-talks/blob/2c6c81/docs/image-sources/repo-examples/1.svg)
+![](https://github.com/cloudogu/gitops-talks/blob/1744c1d/docs/image-sources/repo-examples/1.svg)
 
 
 ### ArgoCD autopilot
@@ -119,7 +119,7 @@ See also [^3].
   * In the future: a lot more automation
     and YAML creation
 
-![](https://github.com/cloudogu/gitops-talks/blob/2c6c81/docs/image-sources/repo-examples/3.svg)
+![](https://github.com/cloudogu/gitops-talks/blob/1744c1d/docs/image-sources/repo-examples/3.svg)
 
 
 ### Flux Monorepo
@@ -133,7 +133,7 @@ See also [^3].
 * **Linking**: `kustomize.yaml`, Flux `Kustomization`
 * **Features**: cross-cutting infra
 
-![](https://github.com/cloudogu/gitops-talks/blob/2c6c81/docs/image-sources/repo-examples/4.svg)
+![](https://github.com/cloudogu/gitops-talks/blob/1744c1d/docs/image-sources/repo-examples/4.svg)
 
 
 ### Flux repo per team/tenant
@@ -147,7 +147,7 @@ See also [^3].
 * **Linking**: `kustomize.yaml`, Flux `Kustomization`
 * **Features**: cross-cutting infra
 
-![](https://github.com/cloudogu/gitops-talks/blob/2c6c81/docs/image-sources/repo-examples/5.svg)
+![](https://github.com/cloudogu/gitops-talks/blob/1744c1d/docs/image-sources/repo-examples/5.svg)
 
 
 ### 📕 Path to GitOps examples
@@ -169,7 +169,7 @@ See also [^3].
   * Cross-cutting infra and app(s)
   * ArgoCD **and** Flux examples
 
-![](https://github.com/cloudogu/gitops-talks/blob/2c6c81/docs/image-sources/repo-examples/6.svg)
+![](https://github.com/cloudogu/gitops-talks/blob/1744c1d/docs/image-sources/repo-examples/6.svg)
 
 
 ### Environment variations
@@ -181,7 +181,7 @@ See also [^3].
   * Env variants for a single app
   * Promotion "via cp"
 
-![](https://github.com/cloudogu/gitops-talks/blob/2c6c81/docs/image-sources/repo-examples/7.svg)
+![](https://github.com/cloudogu/gitops-talks/blob/1744c1d/docs/image-sources/repo-examples/7.svg)
 
 ## Synonoyms
 
@@ -189,9 +189,9 @@ See also [^3].
 * GitOps process design ≈ GitOps repository structures,
 * GitOps Operator ≈ GitOps controller
 * Config Repo = GitOps repo, Infra repo, Payload repo  
-  ![Config repo example](https://github.com/cloudogu/gitops-talks/blob/2c6c81/images/gitops-repo-example.svg) 
+  ![Config repo example](https://github.com/cloudogu/gitops-talks/blob/1744c1d/images/gitops-repo-example.svg) 
 * App repo = Source code repo, Source repo  
-  ![App repo example](https://github.com/cloudogu/gitops-talks/blob/2c6c81/images/app-repo-example.svg) 
+  ![App repo example](https://github.com/cloudogu/gitops-talks/blob/1744c1d/images/app-repo-example.svg) 
 * Environment = Stage
 * Folder = Directory
 * Templating ≈ Templating, Patching, Overlay, Rendering?
