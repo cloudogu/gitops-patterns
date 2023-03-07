@@ -194,7 +194,7 @@ See also [^3].
   ![App repo example](https://github.com/cloudogu/gitops-talks/blob/1744c1d/images/app-repo-example.svg) 
 * Environment = Stage
 * Folder = Directory
-* Templating ≈ Templating, Patching, Overlay, Rendering?
+* Templating ≈ Templating, Patching, Overlay, Rendering, Bundling, Packaging?
 
 
 ## References
