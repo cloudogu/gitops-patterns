@@ -20,8 +20,8 @@ PRs welcome!
 Let's categorize our GitOps patterns into separate ares to make them easier to grasp.
 
 * **Operator deployment**: GitOps operators ↔ Clusters/Namespaces
-* **Repository structure**: How many repos?
-* **Release promotion**: How to model environments/stages?
+* **Repository**: How many repos?
+* **Promotion**: How to model environments/stages?
 * **Wiring**: Bootstrapping operator, linking repos and folders
 
 ## GitOps Patterns
@@ -51,7 +51,9 @@ Let's categorize our GitOps patterns into separate ares to make them easier to g
   Synonym: Environment per repository[^5], Repo per Stage  
 
 
-### Release promotion
+### Promotion
+
+[Release](https://codefresh.io/blog/how-to-model-your-gitops-environments-and-promote-releases-between-them/)\/[Application](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro)/[Environment](https://github.com/kostis-codefresh/gitops-environment-promotion)/[Workload](https://www.weave.works/blog/kubernetes-workload-promotion-in-gitops-cd-pipelines) Promotion
 
 * **Folder/Directory per environment**  
   Synonym: Environment per folder [^5]  
