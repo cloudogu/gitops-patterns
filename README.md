@@ -59,8 +59,9 @@ Let's categorize our GitOps patterns into separate ares to make them easier to g
   Synonym: Environment per folder [^5]  
 * **Repo per environment** [^4]  
   Synonym: Environment per repo [^5]  
-* **Branch per environment** (anti-pattern[^7])  
-  Synoym: Environment per branch [^5]
+* **Branch per environment**
+  Synoym: Environment per branch [^5]  
+  Often discouraged [^6] or declared an anti-pattern[^7][^14], but can work [^13].  
 * **Preview environments** [^9] [^10] [^11]  
   Synoyms: ephemeral, dynamic, pull request[^8], test, temporary[^9]
 
@@ -71,7 +72,7 @@ Let's categorize our GitOps patterns into separate ares to make them easier to g
   * plain kustomize (`kustomize.yaml`)
   * Helm 
     * via CRD such as `HelmRelease` (Flux) or `Application` (ArgoCD)
-    * via Umbrella Chart[^11]
+    * via Umbrella Chart[^12]
 * **Global Environments** vs **Environment per App**[^3]  
   ![Global Envs](https://github.com/cloudogu/gitops-talks/blob/1744c1d/images/global-environments.svg)
   ![Env per app](https://github.com/cloudogu/gitops-talks/blob/1744c1d/images/environment-per-app.svg)
@@ -212,4 +213,6 @@ See also [^3].
 [^9]: Article [Creating Temporary Preview Environments Based On Pull Requests With Argo CD And Codefresh](https://codefresh.io/blog/creating-temporary-preview-environments-based-pull-requests-argo-cd-codefresh/) by Codefresh
 [^10]: Talk [GitOps Con Europe - Implementing Preview Environments with GitOps in Kubernetes ](https://www.youtube.com/watch?v=QNAiIJRIVWA&t=202s) by  François Le Pape, Remazing
 [^11]: Talk [Preview Environments with ArgoCD](https://www.youtube.com/watch?v=7ahiwZuiCBM) by Brandon Phillips
-[^11]: Documentation [Helm | Chart Development Tips and Tricks](https://v3-1-0.helm.sh/docs/howto/charts_tips_and_tricks/#complex-charts-with-many-dependencies)
+[^12]: Documentation [Helm | Chart Development Tips and Tricks](https://v3-1-0.helm.sh/docs/howto/charts_tips_and_tricks/#complex-charts-with-many-dependencies)
+[^13]: Article [Monitoring and Hardening the GitOps Delivery Pipeline with Flux](https://medium.com/mediamarktsaturn-tech-blog/monitoring-and-hardening-the-gitops-delivery-pipeline-with-flux-a226bdef0351) by Florian Heubeck
+[^14]: Article [Git best practices: Workflows for GitOps deployments ](https://developers.redhat.com/articles/2022/07/20/git-workflows-best-practices-gitops-deployments) by Christian Hernandez
