@@ -63,7 +63,8 @@ Let's categorize our GitOps patterns into separate ares to make them easier to g
   Synoym: Environment per branch [^5]  
   Often discouraged [^6] or declared an anti-pattern[^7][^14], but can work [^13].  
 * **Preview environments** [^9] [^10] [^11]  
-  Synoyms: ephemeral, dynamic, pull request[^8], test, temporary[^9]
+  Synoyms: ephemeral, dynamic, pull request[^8], test, temporary[^9]  
+  Beyond the GitOps world also known as "Preview Deployments"[^15] and "Deploy Previews"[^16]
 
 
 #### Implementing release promotion
@@ -216,3 +217,6 @@ See also [^3].
 [^12]: Documentation [Helm | Chart Development Tips and Tricks](https://v3-1-0.helm.sh/docs/howto/charts_tips_and_tricks/#complex-charts-with-many-dependencies)
 [^13]: Article [Monitoring and Hardening the GitOps Delivery Pipeline with Flux](https://medium.com/mediamarktsaturn-tech-blog/monitoring-and-hardening-the-gitops-delivery-pipeline-with-flux-a226bdef0351) by Florian Heubeck
 [^14]: Article [Git best practices: Workflows for GitOps deployments ](https://developers.redhat.com/articles/2022/07/20/git-workflows-best-practices-gitops-deployments) by Christian Hernandez
+[^15]: Documentation [Vercel: Preview Deployments](https://vercel.com/docs/concepts/deployments/preview-deployments)
+[^16]: Documentation [Netlify: Deploy Previews](https://docs.netlify.com/site-deploys/deploy-previews/)
+
