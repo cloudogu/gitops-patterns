@@ -78,6 +78,13 @@ Let's categorize our GitOps patterns into separate ares to make them easier to g
 * **Global Environments** vs **Environment per App**[^3]  
   ![Global Envs](https://github.com/cloudogu/gitops-talks/blob/1744c1d/images/global-environments.svg)
   ![Env per app](https://github.com/cloudogu/gitops-talks/blob/1744c1d/images/environment-per-app.svg)
+* **Config update**  
+  Who updates image (version) in GitOps repo, creates branch and PR?
+  * Manual: Human pushes branch and create PR 🥵
+  * Image Updater: Operator pushes branch, create PR manually
+  * CI Server: Build job pushes branch, creates PR
+  * Dependency Bot: Bot pushes branch, creates PR
+
 
 
 ### Wiring
