@@ -68,12 +68,13 @@ Let's categorize our GitOps patterns into separate ares to make them easier to g
 
 
 #### Implementing release promotion
-* **Templating**
-  Synonyms: Templating, Patching, Overlay, Rendering?
+* **Configuration Management**  
+  Synonyms: Templating, Patching, Overlay, Rendering
   * plain kustomize (`kustomize.yaml`)
   * Helm 
     * via CRD such as `HelmRelease` (Flux) or `Application` (ArgoCD)
     * via Umbrella Chart[^12]
+    * via `helm template` on CI server
 * **Global Environments** vs **Environment per App**[^3]  
   ![Global Envs](https://github.com/cloudogu/gitops-talks/blob/1744c1d/images/global-environments.svg)
   ![Env per app](https://github.com/cloudogu/gitops-talks/blob/1744c1d/images/environment-per-app.svg)
