@@ -53,7 +53,7 @@ Let's categorize our GitOps patterns into separate ares to make them easier to g
 
 ### Promotion
 
-[Release](https://codefresh.io/blog/how-to-model-your-gitops-environments-and-promote-releases-between-them/)\/[Application](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro)/[Environment](https://github.com/kostis-codefresh/gitops-environment-promotion)/[Workload](https://www.weave.works/blog/kubernetes-workload-promotion-in-gitops-cd-pipelines) Promotion
+[Release](https://codefresh.io/blog/how-to-model-your-gitops-environments-and-promote-releases-between-them/)\/[Application](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro)/[Environment](https://github.com/kostis-codefresh/gitops-environment-promotion)/[Workload](https://www.weave.works/blog/kubernetes-workload-promotion-in-gitops-cd-pipelines)/[Change](https://twitter.com/argoproj/status/1642527308450873345) Promotion
 
 * **Folder/Directory per environment**  
   Synonym: Environment per folder [^5]  
