@@ -93,7 +93,7 @@ Let's categorize our GitOps patterns into separate ares to make them easier to g
   e.g. using `kubectl` or operator-specific CLI such as `flux` or `argocd-autopilot`
 * **Linking**
   e.g. using Operator-specific CRDs such as `Kustomization` (Flux) or `Application` (ArgoCD)
-* **Nesting**, e.g. App of Apps pattern (ArgoCD)
+* **Nesting**, e.g. App of Apps pattern [^17] (ArgoCD)
 * **Templating**, e.g. implemented using `ApplicationSets`
 
 ## Public GitOps Repo Examples
@@ -227,4 +227,4 @@ See also [^3].
 [^14]: Article [Git best practices: Workflows for GitOps deployments ](https://developers.redhat.com/articles/2022/07/20/git-workflows-best-practices-gitops-deployments) by Christian Hernandez
 [^15]: Documentation [Vercel: Preview Deployments](https://vercel.com/docs/concepts/deployments/preview-deployments)
 [^16]: Documentation [Netlify: Deploy Previews](https://docs.netlify.com/site-deploys/deploy-previews/)
-
+[^17]: Documentation [ArgoCD: Cluster Bootstrapping - App Of Apps Pattern](https://github.com/argoproj/argo-cd/blob/v2.7.1/docs/operator-manual/cluster-bootstrapping.md#app-of-apps-pattern)
