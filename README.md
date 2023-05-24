@@ -17,7 +17,7 @@ PRs welcome!
 
 ## Contents
 
-- [Pattern areas](#pattern-areas)
+- [Pattern categories](#pattern-categories)
 - [GitOps Patterns](#gitops-patterns)
   - [Operator deployment](#operator-deployment)
     - [Hub and Spoke](#hub-and-spoke)
@@ -52,9 +52,9 @@ PRs welcome!
 - [Synonyms](#synonyms)
 - [References](#references)
 
-## Pattern areas
+## Pattern categories
 
-Let's categorize GitOps patterns into separate areas to make them easier to grasp.
+Let's group GitOps patterns into separate categories to make them easier to grasp.
 
 * **Operator deployment**: GitOps operators ↔ Clusters/Namespaces
 * **Repository**: How many repos?
@@ -68,11 +68,11 @@ Let's categorize GitOps patterns into separate areas to make them easier to gras
 ### Operator deployment
 
 * **Hub and Spoke** [^1][^2] 1 Operator : n Clusters  <span id="hub-and-spoke"/>    
-  ![Hube and spoke](https://raw.githubusercontent.com/cloudogu/gitops-talks/875a3eca/images/deployment-hub-and-spoke.svg)
+  ![Hube and spoke](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/images/deployment-hub-and-spoke.svg)
 * **Standalone** [^1]: 1 Operator : 1 Cluster <span id="standalone"/>  
-  ![Standalone](https://raw.githubusercontent.com/cloudogu/gitops-talks/875a3eca/images/deployment-standalone.svg)
+  ![Standalone](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/images/deployment-standalone.svg)
 * **Namespaced** [^3]: n Operators : 1 Cluster <span id="namespaced"/>  
-  ![Namespaced](https://raw.githubusercontent.com/cloudogu/gitops-talks/875a3eca/images/deployment-namespaced.svg)
+  ![Namespaced](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/images/deployment-namespaced.svg)
 * **Split-Instance** [^1]: 1 Operator : n Clusters; components split between management and target clusters <span id="split-instance"/>
 
 
@@ -92,8 +92,8 @@ Let's categorize GitOps patterns into separate areas to make them easier to gras
 
 ### Promotion
 
-We understand promotions as the process of deploying applications to different environments.  
-Sometimes, the term "promotion" is prefixed with other words: [Release](https://codefresh.io/blog/how-to-model-your-gitops-environments-and-promote-releases-between-them/)/[Application](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro)/[Environment](https://github.com/kostis-codefresh/gitops-environment-promotion)/[Workload](https://www.weave.works/blog/kubernetes-workload-promotion-in-gitops-cd-pipelines)/[Change](https://twitter.com/argoproj/status/1642527308450873345) Promotion
+We understand the term "promotion" as the process of deploying applications to different environments.  
+Sometimes, the term "promotion" is prefixed with other words: [Release](https://codefresh.io/blog/how-to-model-your-gitops-environments-and-promote-releases-between-them/)/[Application](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro)/[Environment](https://github.com/kostis-codefresh/gitops-environment-promotion)/[Workload](https://www.weave.works/blog/kubernetes-workload-promotion-in-gitops-cd-pipelines)/[Change](https://twitter.com/argoproj/status/1642527308450873345).
 
 For promotion, we see different sets of patterns: 
 * one regarding the modelling of environments and
@@ -122,8 +122,8 @@ For promotion, we see different sets of patterns:
     * via Umbrella Chart[^12] <span id="umbrella-chart"/>
     * via `helm template` on CI server
 * **Global Environments** vs **Environment per App**[^3]  <span id="global-vs-env-per-app"/>  
-  ![Global Envs](https://raw.githubusercontent.com/cloudogu/gitops-talks/875a3eca/images/global-environments.svg)
-  ![Env per app](https://raw.githubusercontent.com/cloudogu/gitops-talks/875a3eca/images/environment-per-app.svg)
+  ![Global Envs](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/images/global-environments.svg)
+  ![Env per app](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/images/environment-per-app.svg)
 * **Config update** <span id="config-update"/>  
   Who updates image (version) in GitOps repo, creates branch and PR?
   * Manual: Human pushes branch and create PR 🥵
@@ -160,7 +160,7 @@ See also [^3].
   * Mixed repo patterns
   * ArgoCD **and** Flux examples
 
-![](https://raw.githubusercontent.com/cloudogu/gitops-talks/875a3eca/docs/image-sources/repo-examples/2.svg)
+![](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/docs/image-sources/repo-examples/2.svg)
 
 
 ### ArgoCD autopilot
@@ -177,7 +177,7 @@ See also [^3].
   * In the future: a lot more automation
     and YAML creation
 
-![](https://raw.githubusercontent.com/cloudogu/gitops-talks/875a3eca/docs/image-sources/repo-examples/3.svg)
+![](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/docs/image-sources/repo-examples/3.svg)
 
 
 ### Flux Monorepo
@@ -191,7 +191,7 @@ See also [^3].
 * **Linking**: `kustomize.yaml`, Flux `Kustomization`
 * **Features**: cross-cutting infra
 
-![](https://raw.githubusercontent.com/cloudogu/gitops-talks/875a3eca/docs/image-sources/repo-examples/4.svg)
+![](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/docs/image-sources/repo-examples/4.svg)
 
 
 ### Flux repo per team/tenant
@@ -205,7 +205,7 @@ See also [^3].
 * **Linking**: `kustomize.yaml`, Flux `Kustomization`
 * **Features**: cross-cutting infra
 
-![](https://raw.githubusercontent.com/cloudogu/gitops-talks/875a3eca/docs/image-sources/repo-examples/5.svg)
+![](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/docs/image-sources/repo-examples/5.svg)
 
 
 ### 📕 Path to GitOps examples
@@ -227,7 +227,7 @@ See also [^3].
   * Cross-cutting infra and app(s)
   * ArgoCD **and** Flux examples
 
-![](https://raw.githubusercontent.com/cloudogu/gitops-talks/875a3eca/docs/image-sources/repo-examples/6.svg)
+![](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/docs/image-sources/repo-examples/6.svg)
 
 
 ### Environment variations
@@ -239,7 +239,7 @@ See also [^3].
   * Env variants for a single app
   * Promotion "via cp"
 
-![](https://raw.githubusercontent.com/cloudogu/gitops-talks/875a3eca/docs/image-sources/repo-examples/7.svg)
+![](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/docs/image-sources/repo-examples/7.svg)
 
 ## Synonyms
 
@@ -247,9 +247,9 @@ See also [^3].
 * GitOps process design ≈ GitOps repository structures,
 * GitOps Operator ≈ GitOps controller
 * Config Repo = GitOps repo, Infra repo, Payload repo  
-  ![Config repo example](https://raw.githubusercontent.com/cloudogu/gitops-talks/875a3eca/images/gitops-repo-example.svg)
+  ![Config repo example](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/images/gitops-repo-example.svg)
 * App repo = Source code repo, Source repo  
-  ![App repo example](https://raw.githubusercontent.com/cloudogu/gitops-talks/875a3eca/images/app-repo-example.svg)
+  ![App repo example](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/images/app-repo-example.svg)
 * Environment = Stage
 * Folder = Directory
 * Templating ≈ Templating, Patching, Overlay, Rendering, Bundling, Packaging?
