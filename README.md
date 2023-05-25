@@ -68,13 +68,17 @@ Let's group GitOps patterns into separate categories to make them easier to gras
 ### Operator deployment
 
 * **Hub and Spoke** [^1][^2] 1 Operator : n Clusters  <span id="hub-and-spoke"/>    
+  Synonyms: Management Cluster [^18]  
   ![Hube and spoke](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/images/deployment-hub-and-spoke.svg)
 * **Standalone** [^1]: 1 Operator : 1 Cluster <span id="standalone"/>  
+  Synonyms: Per-Cluster [^18]  
   ![Standalone](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/images/deployment-standalone.svg)
 * **Namespaced** [^3]: n Operators : 1 Cluster <span id="namespaced"/>  
   ![Namespaced](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/images/deployment-namespaced.svg)
 * **Split-Instance** [^1]: 1 Operator : n Clusters; components split between management and target clusters <span id="split-instance"/>
 
+More Patterns: 
+* [^18] mentions hybrids of Hub and Spoke and Standalone patterns
 
 ### Repository structure
 
@@ -274,3 +278,4 @@ See also [^3].
 [^15]: Documentation [Vercel: Preview Deployments](https://vercel.com/docs/concepts/deployments/preview-deployments)  
 [^16]: Documentation [Netlify: Deploy Previews](https://docs.netlify.com/site-deploys/deploy-previews/)  
 [^17]: Documentation [ArgoCD: Cluster Bootstrapping - App Of Apps Pattern](https://github.com/argoproj/argo-cd/blob/v2.7.1/docs/operator-manual/cluster-bootstrapping.md#app-of-apps-pattern)  
+[^18]: Talk  [Control Plane, Service, or Both? – Argo CD Multi-Cluster Architectures - Nicholas Morey, Akuity](https://www.youtube.com/watch?v=dvGkuysWQIA)  
