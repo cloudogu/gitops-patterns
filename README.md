@@ -278,4 +278,4 @@ See also [^3].
 [^15]: Documentation [Vercel: Preview Deployments](https://vercel.com/docs/concepts/deployments/preview-deployments)  
 [^16]: Documentation [Netlify: Deploy Previews](https://docs.netlify.com/site-deploys/deploy-previews/)  
 [^17]: Documentation [ArgoCD: Cluster Bootstrapping - App Of Apps Pattern](https://github.com/argoproj/argo-cd/blob/v2.7.1/docs/operator-manual/cluster-bootstrapping.md#app-of-apps-pattern)  
-[^18]: Talk  [Control Plane, Service, or Both? – Argo CD Multi-Cluster Architectures - Nicholas Morey, Akuity](https://www.youtube.com/watch?v=dvGkuysWQIA)  
+[^18]: Talk  [Control Plane, Service, or Both? – Argo CD Multi-Cluster Architectures - Nicholas Morey, Akuity]([https://www.youtube.com/watch?v=dvGkuysWQIA](https://www.youtube.com/watch?v=vyaZv4yM3_o)https://www.youtube.com/watch?v=vyaZv4yM3_o)  
