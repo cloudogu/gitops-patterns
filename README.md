@@ -27,8 +27,8 @@ PRs welcome!
   - [Repository structure](#repository-structure)
     - [Monorepo](#monorepo)
     - [Repo per Team](#repo-per-team)
-    - [Repo per Application](#repo-per-app) (can be implemented via Config Replication or 
-Repo Pointer)
+    - [Repo per Application](#repo-per-app) (can be implemented via [Config Replication](#config-replication) or 
+[Repo Pointer](#repo-pointer))
     - [Repo per Environment](#repo-per-env)
   - [Promotion](#promotion)
     - [Environments](#environments)
@@ -89,8 +89,8 @@ More Patterns:
   More generalized: Team ➡️ Tenant[^4]
 * **Repo per Application** [^2][^4] <span id="repo-per-app"/>    
   Implementations:
-  * Config replication [^3]
-  * Repo pointer [^6][^3]
+  * Config replication [^3]  <span id="config-replication"/>
+  * Repo pointer [^6][^3]  <span id="repo-pointer"/>
 * **Repo per environment** [^4] <span id="repo-per-env"/>  
   Synonym: Environment per repository[^5], Repo per Stage
 
