@@ -27,8 +27,9 @@ PRs welcome!
   - [Repository structure](#repository-structure)
     - [Monorepo](#monorepo)
     - [Repo per Team](#repo-per-team)
-    - [Repo per Application](#repo-per-app)
-    - [Repo per environment](#repo-per-env)
+    - [Repo per Application](#repo-per-app) (can be implemented via Config Replication or 
+Repo Pointer)
+    - [Repo per Environment](#repo-per-env)
   - [Promotion](#promotion)
     - [Environments](#environments)
       - [Folder/Directory per environment](#folder-per-env)
