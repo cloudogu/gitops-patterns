@@ -21,8 +21,8 @@ PRs welcome!
 - [GitOps Patterns](#gitops-patterns)
   - [Operator deployment](#operator-deployment)
     - [Hub and Spoke](#hub-and-spoke)
-    - [Standalone](#standalone)
-    - [Namespaced](#namespaced)
+    - [Instance per Cluster](#instance-per-cluster)
+    - [Instance per Namspace](#instance-per-namespace)
     - [Split-Instance](#split-instance)
   - [Repository structure](#repository-structure)
     - [Monorepo](#monorepo)
@@ -70,16 +70,17 @@ Let's group GitOps patterns into separate categories to make them easier to gras
 
 * **Hub and Spoke** [^1][^2] 1 Operator : n Clusters  <span id="hub-and-spoke"/>    
   Synonyms: Management Cluster [^18]  
-  ![Hube and spoke](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/images/deployment-hub-and-spoke.svg)
-* **Standalone** [^1]: 1 Operator : 1 Cluster <span id="standalone"/>  
-  Synonyms: Per-Cluster [^18]  
-  ![Standalone](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/images/deployment-standalone.svg)
-* **Namespaced** [^3]: n Operators : 1 Cluster <span id="namespaced"/>  
-  ![Namespaced](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/images/deployment-namespaced.svg)
-* **Split-Instance** [^1]: 1 Operator : n Clusters; components split between management and target clusters <span id="split-instance"/>
+  ![Hube and spoke](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/images/deployment-hub-and-spoke.svg)
+* **Instance Per Cluster** [^18] : 1 Operator : 1 Cluster <span id="standalone"/> <span id="instance-per-cluster"/>  
+  Synonyms: Standalone [^1]  
+  ![Instance Per Cluster](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/images/deployment-instance-per-cluster.svg)
+* **Instance per Namespace**: n Operators : 1 Cluster <span id="namespaced"/> <span id="instance-per-namespace"/>  
+  Synonyms: Namespaced [^3]  
+  ![Instance per Namespace](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/images/deployment-instance-per-namespace.svg)
 
-More Patterns: 
-* [^18] mentions hybrids of Hub and Spoke and Standalone patterns
+More Patterns:
+* Split-Instance[^1]: 1 Operator : n Clusters; components split between management and target clusters
+* Hybrids of Hub and Spoke and Instance per Cluster patterns: "Instance per Logical Group" and "Argo Managing more Argos".[^18]
 
 ### Repository structure
 
@@ -127,8 +128,8 @@ For promotion, we see different sets of patterns:
     * via Umbrella Chart[^12] <span id="umbrella-chart"/>
     * via `helm template` on CI server
 * **Global Environments** vs **Environment per App**[^3]  <span id="global-vs-env-per-app"/>  
-  ![Global Envs](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/images/global-environments.svg)
-  ![Env per app](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/images/environment-per-app.svg)
+  ![Global Envs](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/images/global-environments.svg)
+  ![Env per app](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/images/environment-per-app.svg)
 * **Config update** <span id="config-update"/>  
   Who updates image (version) in GitOps repo, creates branch and PR?
   * Manual: Human pushes branch and create PR 🥵
@@ -154,7 +155,7 @@ See also [^3].
 [cloudogu/gitops-playground](https://github.com/cloudogu/gitops-playground)
 
 * **Repo pattern**: Per team mixed with per app
-* **Operator pattern**: Standalone (Hub and Spoke, namespaced)
+* **Operator pattern**: Instance per Cluster (Hub and Spoke also possible)
 * **Operator**: ArgoCD (Flux)
 * Boostrapping: `Helm`, `kubectl`
 * Linking: ArgoCD `Application`
@@ -165,7 +166,7 @@ See also [^3].
   * Mixed repo patterns
   * ArgoCD **and** Flux examples
 
-![](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/docs/image-sources/repo-examples/2.svg)
+![](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/docs/image-sources/repo-examples/2.svg)
 
 
 ### ArgoCD autopilot
@@ -173,7 +174,7 @@ See also [^3].
 [argoproj-labs/argocd-autopilot](https://github.com/argoproj-labs/argocd-autopilot)
 
 * **Repo pattern**: Monorepo
-* **Operator pattern**: Standalone / Hub and Spoke
+* **Operator pattern**: Instance per Cluster / Hub and Spoke
 * **Operator**: ArgoCD
 * **Boostrapping**: `argocd-autopilot`
 * Linking: `kustomize.yaml`, ArgoCD `Application`, `ApplicationSet`
@@ -182,7 +183,7 @@ See also [^3].
   * In the future: a lot more automation
     and YAML creation
 
-![](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/docs/image-sources/repo-examples/3.svg)
+![](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/docs/image-sources/repo-examples/3.svg)
 
 
 ### Flux Monorepo
@@ -190,13 +191,13 @@ See also [^3].
 [fluxcd/flux2-kustomize-helm-example](https://github.com/fluxcd/flux2-kustomize-helm-example)
 
 * **Repo pattern**: Monorepo
-* **Operator pattern**: Standalone
+* **Operator pattern**: Instance per Cluster
 * **Operator**: Flux
 * **Boostrapping**: `flux` CLI
 * **Linking**: `kustomize.yaml`, Flux `Kustomization`
 * **Features**: cross-cutting infra
 
-![](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/docs/image-sources/repo-examples/4.svg)
+![](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/docs/image-sources/repo-examples/4.svg)
 
 
 ### Flux repo per team/tenant
@@ -204,13 +205,13 @@ See also [^3].
 [fluxcd/flux2-multi-tenancy](https://github.com/fluxcd/flux2-multi-tenancy)
 
 * **Repo pattern**: Repo per team/tenant
-* **Operator pattern**: Standalone
+* **Operator pattern**: Instance per Cluster
 * **Operator**: Flux
 * **Boostrapping**: `flux` CLI
 * **Linking**: `kustomize.yaml`, Flux `Kustomization`
 * **Features**: cross-cutting infra
 
-![](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/docs/image-sources/repo-examples/5.svg)
+![](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/docs/image-sources/repo-examples/5.svg)
 
 
 ### 📕 Path to GitOps examples
@@ -222,7 +223,7 @@ See also [^3].
 [christianh814/example-openshift-go-repo](https://github.com/christianh814/example-openshift-go-repo)
 
 * **Repo pattern**: Monorepo
-* **Operator pattern**: Standalone
+* **Operator pattern**: Instance per Cluster
 * **Operator**: [ArgoCD] [flux]
 * **Boostrapping**: kubectl
 * **Linking**: `kustomize.yaml`,
@@ -232,7 +233,7 @@ See also [^3].
   * Cross-cutting infra and app(s)
   * ArgoCD **and** Flux examples
 
-![](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/docs/image-sources/repo-examples/6.svg)
+![](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/docs/image-sources/repo-examples/6.svg)
 
 
 ### Environment variations
@@ -244,7 +245,7 @@ See also [^3].
   * Env variants for a single app
   * Promotion "via cp"
 
-![](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/docs/image-sources/repo-examples/7.svg)
+![](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/docs/image-sources/repo-examples/7.svg)
 
 ## Synonyms
 
@@ -252,9 +253,9 @@ See also [^3].
 * GitOps process design ≈ GitOps repository structures,
 * GitOps Operator ≈ GitOps controller
 * Config Repo = GitOps repo, Infra repo, Payload repo  
-  ![Config repo example](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/images/gitops-repo-example.svg)
+  ![Config repo example](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/images/gitops-repo-example.svg)
 * App repo = Source code repo, Source repo  
-  ![App repo example](https://raw.githubusercontent.com/cloudogu/gitops-talks/5fd86032/images/app-repo-example.svg)
+  ![App repo example](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/images/app-repo-example.svg)
 * Environment = Stage
 * Folder = Directory
 * Templating ≈ Templating, Patching, Overlay, Rendering, Bundling, Packaging?
@@ -279,4 +280,4 @@ See also [^3].
 [^15]: Documentation [Vercel: Preview Deployments](https://vercel.com/docs/concepts/deployments/preview-deployments)  
 [^16]: Documentation [Netlify: Deploy Previews](https://docs.netlify.com/site-deploys/deploy-previews/)  
 [^17]: Documentation [ArgoCD: Cluster Bootstrapping - App Of Apps Pattern](https://github.com/argoproj/argo-cd/blob/v2.7.1/docs/operator-manual/cluster-bootstrapping.md#app-of-apps-pattern)  
-[^18]: Talk  [Control Plane, Service, or Both? – Argo CD Multi-Cluster Architectures - Nicholas Morey, Akuity]([https://www.youtube.com/watch?v=dvGkuysWQIA](https://www.youtube.com/watch?v=vyaZv4yM3_o)https://www.youtube.com/watch?v=vyaZv4yM3_o)  
+[^18]: Talk  [Control Plane, Service, or Both? – Argo CD Multi-Cluster Architectures - Nicholas Morey, Akuity](https://www.youtube.com/watch?v=vyaZv4yM3_o), Article [How many do you need? - Argo CD Architectures Explained](https://akuity.io/blog/argo-cd-architectures-explained/) by Nicholas Morey  
