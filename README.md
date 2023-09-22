@@ -9,7 +9,9 @@ It originated in [schnatterer's talk](https://cloudogu.github.io/gitops-talks/20
 about the "perfect" GitOps process, our experience in [consulting](https://cloudogu.com/en/consulting/?mtm_campaign=gitops-playground&mtm_kwd=consulting&mtm_source=github&mtm_medium=link),
 and our [GitOps trainings for both Flux and ArgoCD](https://platform.cloudogu.com/en/trainings/gitops-continuous-operations/?mtm_campaign=gitops-playground&mtm_kwd=training&mtm_source=github&mtm_medium=link).
 
-For questions or suggestions you are welcome to join us at our [community forum](https://community.cloudogu.com/c/gitops/23).
+You can read more about them in [this series of articles](#articles).
+
+For questions or suggestions, you are welcome to join us at our [community forum](https://community.cloudogu.com/c/gitops/23).
 
 [![Discuss it on myCloudogu](https://static.cloudogu.com/static/images/discuss-it.png)](https://community.cloudogu.com/c/gitops/23)
 
@@ -17,6 +19,7 @@ PRs welcome!
 
 ## Contents
 
+- [Articles](#articles)
 - [Pattern categories](#pattern-categories)
 - [GitOps Patterns](#gitops-patterns)
   - [Operator deployment](#operator-deployment)
@@ -52,6 +55,31 @@ PRs welcome!
   - [Environment variations](#environment-variations)
 - [Synonyms](#synonyms)
 - [References](#references)
+
+## Articles
+
+<table border="0">
+   <tr>
+     <td><img width="50px" src="https://cloudogu.com/assets/blog/2023/gitops-patterns-1_150x150-5d446b6ca993915cb215d62a735c10d9f11750d5ad38836005191ad863c39c019fe08f781841a17349b9d81e1f71f9199669acce02965e0d27904e06a289e23f.png" alt="article icon"/></td>
+     <td><a href="https://cloudogu.com/en/blog/gitops-repository-patterns-part-1-introduction">Part 1️⃣: GitOps Chasm + categories</a></td>
+  </tr>
+  <tr>
+     <td><img width="50px" src="https://cloudogu.com/assets/blog/2023/gitops-patterns-2_150x150-e75f7484d3ac721d49765dc4846909900ee1435a9134eaa900950ccd1bda41154acd087f39900377124e3915819388fe3abcf2fff549f42e050744cf3afc52d6.png" alt="article icon"/></td>
+     <td><a href="https://cloudogu.com/en/blog/gitops-repository-patterns-part-2-operator-deployment-patterns">Part 2️⃣: Deployment patterns</a></td>
+  </tr>
+  <tr>
+     <td><img width="50px" src="https://cloudogu.com/assets/blog/2023/gitops-patterns-3_150x150-51786b5ff0561b8ed439b437e3fbab7c9fe127447c87145e8899780c7f360bab333287ac3ed9e099df71a57ec7b1cfeb8dab8c38a6667986b9f3865adda0e945.png" alt="article icon"/></td>
+     <td><a href="https://cloudogu.com/en/blog/gitops-repository-patterns-part-3-repository-patterns">Part 3️⃣: Repo patterns</a></td>
+  </tr>
+  <tr>
+    <td><img width="50px" src="https://cloudogu.com/assets/blog/2023/gitops-patterns-4_150x150-f4c1b3e73b2b00f3da6b2219a6d73dc98a0d93e4b5d6e986be820ce1df70900e1446c28c8a77dbb22568ed77871f6eb659091841edb80117162be48c08bfcd7e.png" alt="article icon"/></td>
+    <td><a href="https://cloudogu.com/en/blog/gitops-repository-patterns-part-4-promotion-patterns">Part 4️⃣: Promotion patterns</a></td>
+  </tr>
+  <tr>
+    <td><img width="50px" src="https://cloudogu.com/assets/blog/2023/gitops-patterns-5_150x150-bf3aeb38358d09ba8b2f98bb721207e942bbf5e67b9af6f7cc4c70cda8cb9a27707adefe73a3dfe343ba744b91c0bc6e59ace749efaa8dace729be95b75d9a38.png" alt="article icon"/></td>
+    <td><a href="https://cloudogu.com/en/blog/gitops-repository-patterns-part-5-wiring-patterns">Part 5️⃣: Wiring patterns + conclusion</a></td>
+  </tr>
+</table>
 
 ## Pattern categories
 
