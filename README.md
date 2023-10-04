@@ -150,7 +150,7 @@ For promotion, we see different sets of patterns:
 
 * **Configuration Management** <span id="config-management"/>  
   Synonyms: Templating, Patching, Overlay, Rendering
-  * plain kustomize (`kustomize.yaml`)
+  * plain kustomize (`kustomization.yaml`)
   * Helm
     * via CRD such as `HelmRelease` (Flux) or `Application` (ArgoCD)
     * via Umbrella Chart[^12] <span id="umbrella-chart"/>
@@ -205,7 +205,7 @@ See also [^3].
 * **Operator pattern**: Instance per Cluster / Hub and Spoke
 * **Operator**: ArgoCD
 * **Boostrapping**: `argocd-autopilot`
-* Linking: `kustomize.yaml`, ArgoCD `Application`, `ApplicationSet`
+* Linking: `kustomization.yaml`, ArgoCD `Application`, `ApplicationSet`
 * Features:
   * Operate ArgoCD with GitOps
   * In the future: a lot more automation
@@ -222,7 +222,7 @@ See also [^3].
 * **Operator pattern**: Instance per Cluster
 * **Operator**: Flux
 * **Boostrapping**: `flux` CLI
-* **Linking**: `kustomize.yaml`, Flux `Kustomization`
+* **Linking**: `kustomization.yaml`, Flux `Kustomization`
 * **Features**: cross-cutting infra
 
 ![](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/docs/image-sources/repo-examples/4.svg)
@@ -236,7 +236,7 @@ See also [^3].
 * **Operator pattern**: Instance per Cluster
 * **Operator**: Flux
 * **Boostrapping**: `flux` CLI
-* **Linking**: `kustomize.yaml`, Flux `Kustomization`
+* **Linking**: `kustomization.yaml`, Flux `Kustomization`
 * **Features**: cross-cutting infra
 
 ![](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/docs/image-sources/repo-examples/5.svg)
@@ -254,7 +254,7 @@ See also [^3].
 * **Operator pattern**: Instance per Cluster
 * **Operator**: [ArgoCD] [flux]
 * **Boostrapping**: kubectl
-* **Linking**: `kustomize.yaml`,
+* **Linking**: `kustomization.yaml`,
   * ArgoCD `Application`, `ApplicationSet` /
   * Flux  `Kustomization`
 * **Features**:
