@@ -9,7 +9,7 @@ It originated in [schnatterer's talk](https://cloudogu.github.io/gitops-talks/20
 about the "perfect" GitOps process, our experience in [consulting](https://cloudogu.com/en/consulting/?mtm_campaign=gitops-playground&mtm_kwd=consulting&mtm_source=github&mtm_medium=link),
 and our [GitOps trainings for both Flux and ArgoCD](https://platform.cloudogu.com/en/trainings/gitops-continuous-operations/?mtm_campaign=gitops-playground&mtm_kwd=training&mtm_source=github&mtm_medium=link).
 
-You can read more about them in [this series of articles](#articles).
+You can read more about the patterns in [this series of articles](#articles).
 
 For questions or suggestions, you are welcome to join us at our [community forum](https://community.cloudogu.com/c/gitops/23).
 
@@ -97,10 +97,10 @@ Let's group GitOps patterns into separate categories to make them easier to gras
 ### Operator deployment
 
 * **Hub and Spoke** [^1][^2] 1 Operator : n Clusters  <span id="hub-and-spoke"/>    
-  Synonyms: Management Cluster [^18]  
+  Synonyms: Management Cluster [^18] - sounds familiar, e.g. from Cluster API, but it requires a cluster. In SaaS/PaaS constellations, the central instance may not even be operated in a cluster. Therefore, the term "Hub and Spoke" seems more fitting to us, especially since it is also well known from computer networks or logistics.  
   ![Hube and spoke](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/images/deployment-hub-and-spoke.svg)
 * **Instance Per Cluster** [^18] : 1 Operator : 1 Cluster <span id="standalone"/> <span id="instance-per-cluster"/>  
-  Synonyms: Standalone [^1]  
+  Synonyms: Standalone [^1] - could apply to both "Instance per Cluster" and "Instance per Namespace"; does not define the relationship to clusters and namespaces precisely enough, as not every operator supports both deployment patterns.
   ![Instance Per Cluster](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/images/deployment-instance-per-cluster.svg)
 * **Instance per Namespace**: n Operators : 1 Cluster <span id="namespaced"/> <span id="instance-per-namespace"/>  
   Synonyms: Namespaced [^3]  
