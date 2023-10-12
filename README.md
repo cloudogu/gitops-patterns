@@ -286,14 +286,14 @@ See also [^3].
 
 * Patterns ≈ strategies, models, approaches, best practices, standards
 * GitOps process design ≈ GitOps repository structures,
-* GitOps Operator ≈ GitOps controller
+* GitOps Operator ≈ GitOps controller ≈ GitOps agent
 * Config Repo = GitOps repo, Infra repo, Payload repo  
   ![Config repo example](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/images/gitops-repo-example.svg)
 * App repo = Source code repo, Source repo  
   ![App repo example](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/images/app-repo-example.svg)
 * Environment = Stage
 * Folder = Directory
-* Templating ≈ Templating, Patching, Overlay, Rendering, Bundling, Packaging?
+* Templating ≈ Patching, Overlay, Rendering, Bundling, Packaging?
 
 
 ## References
