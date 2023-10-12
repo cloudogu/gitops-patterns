@@ -30,7 +30,7 @@ PRs welcome!
   - [Repository structure](#repository-structure)
     - [Monorepo](#monorepo)
     - [Repo per Team](#repo-per-team)
-    - [Repo per Application](#repo-per-app) (can be implemented via [Config Replication](#config-replication) or 
+    - [Repo per Application](#repo-per-app) (can be implemented via [Config-Code-Separation](#config-code-separation), [Config Replication](#config-replication) or 
 [Repo Pointer](#repo-pointer))
     - [Repo per Environment](#repo-per-env)
   - [Promotion](#promotion)
@@ -118,8 +118,9 @@ More Patterns:
   More generalized: Team ➡️ Tenant[^4]
 * **Repo per Application** [^2][^4] <span id="repo-per-app"/>    
   Implementations:
-  * Config replication [^3]  <span id="config-replication"/>
-  * Repo pointer [^6][^3]  <span id="repo-pointer"/>
+  * Config-Code-Separation [^19] <span id="config-code-separation"/>  
+  * Config replication [^3]  <span id="config-replication"/>  
+  * Repo pointer [^6][^3]  <span id="repo-pointer"/>  
 * **Repo per environment** [^4] <span id="repo-per-env"/>  
   Synonym: Environment per repository[^5], Repo per Stage
 
@@ -307,5 +308,6 @@ See also [^3].
 [^14]: Article [Git best practices: Workflows for GitOps deployments ](https://developers.redhat.com/articles/2022/07/20/git-workflows-best-practices-gitops-deployments) by Christian Hernandez  
 [^15]: Documentation [Vercel: Preview Deployments](https://vercel.com/docs/concepts/deployments/preview-deployments)  
 [^16]: Documentation [Netlify: Deploy Previews](https://docs.netlify.com/site-deploys/deploy-previews/)  
-[^17]: Documentation [ArgoCD: Cluster Bootstrapping - App Of Apps Pattern](https://github.com/argoproj/argo-cd/blob/v2.7.1/docs/operator-manual/cluster-bootstrapping.md#app-of-apps-pattern)  
+[^17]: Documentation [ArgoCD: Cluster Bootstrapping - App Of Apps Pattern](https://github.com/argoproj/argo-cd/blob/v2.8.4/docs/operator-manual/cluster-bootstrapping.md#app-of-apps-pattern)  
 [^18]: Talk  [Control Plane, Service, or Both? – Argo CD Multi-Cluster Architectures - Nicholas Morey, Akuity](https://www.youtube.com/watch?v=vyaZv4yM3_o), Article [How many do you need? - Argo CD Architectures Explained](https://akuity.io/blog/argo-cd-architectures-explained/) by Nicholas Morey  
+[^19]: Documentation [Argo CD: Best Practices](https://github.com/argoproj/argo-cd/blob/v2.8.4/docs/user-guide/best_practices.md#separating-config-vs-source-code-repositories)  
