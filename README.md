@@ -119,8 +119,11 @@ More Patterns:
 * **Repo per Application** [^2][^4] <span id="repo-per-app"/>    
   Implementations:
   * Config-Code-Separation [^19] <span id="config-code-separation"/>  
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-talks/b167701/docs/image-sources/gitops-with-app-repo-manual.puml&fmt=svg">
   * Config replication [^3]  <span id="config-replication"/>  
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-talks/main/docs/image-sources/gitops-with-app-repo-ci-git.puml&fmt=svg">
   * Repo pointer [^6][^3]  <span id="repo-pointer"/>  
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-talks/main/docs/image-sources/gitops-with-app-repo-pointer.puml&fmt=svg">
 * **Repo per environment** [^4] <span id="repo-per-env"/>  
   Synonym: Environment per repository[^5], Repo per Stage
 
@@ -162,9 +165,12 @@ For promotion, we see different sets of patterns:
 * **Config update** <span id="config-update"/>  
   Who updates image (version) in GitOps repo, creates branch and PR?
   * Manual: Human pushes branch and create PR 🥵
-  * Image Updater: Operator pushes branch, create PR manually
-  * CI Server: Build job pushes branch, creates PR
-  * Dependency Bot: Bot pushes branch, creates PR
+  * CI Server: Build job pushes branch, creates PR  
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-talks/main/docs/image-sources/gitops-with-app-repo-ci-git.puml&fmt=svg">  
+  * Image Updater: Operator pushes branch, create PR manually  
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-talks/main/docs/image-sources/gitops-with-image-updater.puml&fmt=svg">
+  * Dependency Bot: Bot pushes branch, creates PR  
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-talks/main/docs/image-sources/gitops-with-renovate.puml&fmt=svg">
 
 ### Wiring
 
