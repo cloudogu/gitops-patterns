@@ -100,7 +100,7 @@ Let's group GitOps patterns into separate categories to make them easier to gras
   Synonyms: Management Cluster [^18] - sounds familiar, e.g. from Cluster API, but it requires a cluster. In SaaS/PaaS constellations, the central instance may not even be operated in a cluster. Therefore, the term "Hub and Spoke" seems more fitting to us, especially since it is also well known from computer networks or logistics.  
   ![Hube and spoke](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/images/deployment-hub-and-spoke.svg)
 * **Instance Per Cluster** [^18] : 1 Operator : 1 Cluster <span id="standalone"/> <span id="instance-per-cluster"/>  
-  Synonyms: Standalone [^1] - could apply to both "Instance per Cluster" and "Instance per Namespace"; does not define the relationship to clusters and namespaces precisely enough, as not every operator supports both deployment patterns.
+  Synonyms: Standalone [^1] - could apply to both "Instance per Cluster" and "Instance per Namespace"; does not define the relationship to clusters and namespaces precisely enough, as not every operator supports both deployment patterns.  
   ![Instance Per Cluster](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/images/deployment-instance-per-cluster.svg)
 * **Instance per Namespace**: n Operators : 1 Cluster <span id="namespaced"/> <span id="instance-per-namespace"/>  
   Synonyms: Namespaced [^3]  
@@ -154,7 +154,7 @@ For promotion, we see different sets of patterns:
 
 * **Configuration Management** <span id="config-management"/>  
   Synonyms: Templating, Patching, Overlay, Rendering
-  * plain kustomize (`kustomization.yaml`)
+  * Plain kustomize (`kustomization.yaml`) - "operator-agnostic" (works for Argo CD and Flux)
   * Helm
     * via CRD such as `HelmRelease` (Flux) or `Application` (ArgoCD)
     * via Umbrella Chart[^12] <span id="umbrella-chart"/>
