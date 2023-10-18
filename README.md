@@ -53,6 +53,7 @@ PRs welcome!
   - [Flux repo per team/tenant](#flux-repo-per-teamtenant)
   - [📕 Path to GitOps examples](#-path-to-gitops-examples)
   - [Environment variations](#environment-variations)
+  - [Others](#others)
 - [Synonyms](#synonyms)
 - [References](#references)
 
@@ -281,6 +282,12 @@ The diagrams have been created with [tree2svg](https://github.com/schnatterer/tr
   * Promotion "via cp"
 
 ![](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/docs/image-sources/repo-examples/7.svg)
+
+### Others
+
+Here are some other examples that we haven't had a chance to look at in more detail:
+
+* [Lp-Francois/argocd-multi-tenancy](https://github.com/Lp-Francois/argocd-multi-tenancy) 
 
 ## Synonyms
 
