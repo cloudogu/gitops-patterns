@@ -183,8 +183,8 @@ For promotion, we see different sets of patterns:
 
 ## Public GitOps Repo Examples
 
-See also [^3].
-
+See also [^3].  
+The diagrams have been created with [tree2svg](https://github.com/schnatterer/tree2svg).
 
 ### GitOps Playground
 [cloudogu/gitops-playground](https://github.com/cloudogu/gitops-playground)
