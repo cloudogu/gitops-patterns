@@ -190,7 +190,7 @@ The diagrams have been created with [tree2svg](https://github.com/schnatterer/tr
 ### GitOps Playground
 [cloudogu/gitops-playground](https://github.com/cloudogu/gitops-playground)
 
-* **Repo pattern**: Per team mixed with per app
+* **Repo pattern**: Per team mixed with per app (implemented via Config Replication)
 * **Operator pattern**: Instance per Cluster (Hub and Spoke also possible)
 * **Operator**: ArgoCD (Flux)
 * Boostrapping: `Helm`, `kubectl`
