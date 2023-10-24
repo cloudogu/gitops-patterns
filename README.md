@@ -99,13 +99,13 @@ Let's group GitOps patterns into separate categories to make them easier to gras
 
 * **Hub and Spoke** [^1][^2] 1 Operator : n Clusters  <span id="hub-and-spoke"/>    
   Synonyms: Management Cluster [^18] - sounds familiar, e.g. from Cluster API, but it requires a cluster. In SaaS/PaaS constellations, the central instance may not even be operated in a cluster. Therefore, the term "Hub and Spoke" seems more fitting to us, especially since it is also well known from computer networks or logistics.  
-  ![Hube and spoke](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/images/deployment-hub-and-spoke.svg)
+  ![Hube and spoke](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/svg/deployment-hub-and-spoke.svg)
 * **Instance Per Cluster** [^18] : 1 Operator : 1 Cluster <span id="standalone"/> <span id="instance-per-cluster"/>  
   Synonyms: Standalone [^1] - could apply to both "Instance per Cluster" and "Instance per Namespace"; does not define the relationship to clusters and namespaces precisely enough, as not every operator supports both deployment patterns.  
-  ![Instance Per Cluster](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/images/deployment-instance-per-cluster.svg)
+  ![Instance Per Cluster](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/svg/deployment-instance-per-cluster.svg)
 * **Instance per Namespace**: n Operators : 1 Cluster <span id="namespaced"/> <span id="instance-per-namespace"/>  
   Synonyms: Namespaced [^3]  
-  ![Instance per Namespace](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/images/deployment-instance-per-namespace.svg)
+  ![Instance per Namespace](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/svg/deployment-instance-per-namespace.svg)
 
 More Patterns:
 * Split-Instance[^1]: 1 Operator : n Clusters; components split between management and target clusters
@@ -120,11 +120,11 @@ More Patterns:
 * **Repo per Application** [^2][^4] <span id="repo-per-app"/>    
   Implementations:
   * Config-Code-Separation [^19] <span id="config-code-separation"/>  
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-talks/b167701/docs/image-sources/gitops-with-app-repo-manual.puml&fmt=svg">
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-separation.puml&fmt=svg">
   * Config replication [^3]  <span id="config-replication"/>  
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-talks/main/docs/image-sources/gitops-with-app-repo-ci-git.puml&fmt=svg">
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-ci-git.puml&fmt=svg">
   * Repo pointer [^6][^3]  <span id="repo-pointer"/>  
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-talks/main/docs/image-sources/gitops-with-app-repo-pointer.puml&fmt=svg">
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-pointer.puml&fmt=svg">
 * **Repo per environment** [^4] <span id="repo-per-env"/>  
   Synonym: Environment per repository[^5], Repo per Stage
 
@@ -161,17 +161,17 @@ For promotion, we see different sets of patterns:
     * via Umbrella Chart[^12] <span id="umbrella-chart"/>
     * via `helm template` on CI server
 * **Global Environments** vs **Environment per App**[^3]  <span id="global-vs-env-per-app"/>  
-  ![Global Envs](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/images/global-environments.svg)
-  ![Env per app](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/images/environment-per-app.svg)
+  ![Global Envs](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/svg/global-environments.svg)
+  ![Env per app](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/svg/environment-per-app.svg)
 * **Config update** <span id="config-update"/>  
   Who updates image (version) in GitOps repo, creates branch and PR?
   * Manual: Human pushes branch and create PR 🥵
   * CI Server: Build job pushes branch, creates PR  
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-talks/main/docs/image-sources/gitops-with-app-repo-ci-git.puml&fmt=svg">  
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-separation.puml&fmt=svg">  
   * Image Updater: Operator pushes branch, create PR manually  
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-talks/main/docs/image-sources/gitops-with-image-updater.puml&fmt=svg">
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-image-updater.puml&fmt=svg">
   * Dependency Bot: Bot pushes branch, creates PR  
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-talks/main/docs/image-sources/gitops-with-renovate.puml&fmt=svg">
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-renovate.puml&fmt=svg">
 
 ### Wiring
 
@@ -295,9 +295,9 @@ Here are some other examples that we haven't had a chance to look at in more det
 * GitOps process design ≈ GitOps repository structures,
 * GitOps Operator ≈ GitOps controller ≈ GitOps agent
 * Config Repo = GitOps repo, Infra repo, Payload repo  
-  ![Config repo example](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/images/gitops-repo-example.svg)
+  ![Config repo example](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/svg/config-repo-example.svg)
 * App repo = Source code repo, Source repo  
-  ![App repo example](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/images/app-repo-example.svg)
+  ![App repo example](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/svg/app-repo-example.svg)
 * Environment = Stage
 * Folder = Directory
 * Templating ≈ Patching, Overlay, Rendering, Bundling, Packaging?
