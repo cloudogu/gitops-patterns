@@ -122,7 +122,9 @@ More Patterns:
   * Config-Code-Separation [^19] <span id="config-code-separation"/>  
     <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-separation.puml&fmt=svg">
   * Config replication [^3]  <span id="config-replication"/>  
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-ci-git.puml&fmt=svg">
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-replication.puml&fmt=svg">  
+    Alternative implementation: replicate to OCI as a "GitOps Cache":  
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-replication-oci.puml&fmt=svg">  
   * Repo pointer [^6][^3]  <span id="repo-pointer"/>  
     <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-pointer.puml&fmt=svg">
 * **Repo per environment** [^4] <span id="repo-per-env"/>  
@@ -167,7 +169,7 @@ For promotion, we see different sets of patterns:
   Who updates image (version) in GitOps repo, creates branch and PR?
   * Manual: Human pushes branch and create PR 🥵
   * CI Server: Build job pushes branch, creates PR  
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-separation.puml&fmt=svg">  
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-ci.puml&fmt=svg">  
   * Image Updater: Operator pushes branch, create PR manually  
     <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-image-updater.puml&fmt=svg">
   * Dependency Bot: Bot pushes branch, creates PR  
