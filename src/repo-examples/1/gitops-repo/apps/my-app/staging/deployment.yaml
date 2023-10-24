@@ -1,0 +1,143 @@
+---
+# Source: springboot/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-petclinic-helm-springboot
+  labels:
+    app.kubernetes.io/name: springboot
+    helm.sh/chart: springboot-0.3.0
+    app.kubernetes.io/instance: spring-petclinic-helm
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+      nodePort: 30022
+  selector:
+    app.kubernetes.io/name: springboot
+    app.kubernetes.io/instance: spring-petclinic-helm
+---
+# Source: springboot/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-petclinic-helm-springboot
+  labels:
+    app.kubernetes.io/name: springboot
+    helm.sh/chart: springboot-0.3.0
+    app.kubernetes.io/instance: spring-petclinic-helm
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 100%
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: springboot
+      app.kubernetes.io/instance: spring-petclinic-helm
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: springboot
+        app.kubernetes.io/instance: spring-petclinic-helm
+      annotations:
+        # For some reason the default profile that works well with docker is explicitly disabled in k8s.
+        # We use it by default and only disable it, in case of problems (which are unlikely)
+        seccomp.security.alpha.kubernetes.io/pod: runtime/default
+        # Make prometheus collect the metrics of the pods
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '9080'
+        prometheus.io/path: '/actuator/prometheus'
+    spec:
+      containers:
+        - name: spring-petclinic-helm-springboot
+          image: "localhost:30000/spring-petclinic-helm:202305021549-a19852a-main"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 9080
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 9080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+          resources:
+            limits:
+              memory: 750Mi
+            requests:
+              memory: 750Mi
+          securityContext:
+            # Those settings mitigate a lot of vulnerabilities
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 100000
+            runAsGroup: 100000
+            capabilities:
+              drop:
+                - ALL
+          volumeMounts:
+            - name: tmp
+              # Tmp folder used by spring to write data. We need to mount this because of "readOnlyRootFilesystem" (see above)
+              mountPath: /tmp/
+          env:
+            - name: SERVER_PORT
+              value: '8080'
+            - name: MANAGEMENT_SERVER_PORT
+              value: '9080'
+            - name: TZ
+              value: Europe/Berlin
+          envFrom:
+      # Don't mount all kubernetes services and ports into the env. This behavior corresponds to the "docker links",
+      # which is deprecated and not used in our services. It
+      # - pollutes the env with lots of entries,
+      # - imposes the risk that applications might mistake the service env as a config parameter
+      #   (e.g. POSTGRES_SERVICE_PORT in keycloak) and
+      # - provides a convenient overview of new target for potential attackers
+      enableServiceLinks: false
+      # Don't mount k8s service account token into pod. This can be used to authenticate to the API server.
+      # It's not used by our services but might be used by potential attackers. There still is the authorization layer,
+      # but one more vulnerability or misconfiguration and the attacker might get access to the API server.
+      automountServiceAccountToken: false
+      volumes:
+        - name: tmp
+          emptyDir: {}
+---
+# Source: springboot/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "spring-petclinic-helm-springboot-test-connection"
+  labels:
+    helm.sh/chart: springboot-0.3.0
+    app.kubernetes.io/name: springboot
+    app.kubernetes.io/instance: spring-petclinic-helm
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['spring-petclinic-helm-springboot:80']
+  restartPolicy: Never

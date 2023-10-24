@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: cluster-resources
+  # In a real-world scenario these might to into a separate namespace
+  namespace: argocd
+  annotations:
+        notifications.argoproj.io/subscribe.email: infra@example.org
+spec:
+  description: Contains basic cluster-resources
+  destinations:
+    - namespace: '*'
+      server: https://kubernetes.default.svc
+  sourceRepos:
+  - http://scmm-scm-manager.default.svc.cluster.local/scm/repo/argocd/cluster-resources
+
+  # allow to only see application resources from the specified namespace
+  sourceNamespaces:
+    - 'argocd'
+
+  # Allow all namespaced-scoped resources to be created
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  # Allow all cluster-scoped resources to be created
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'

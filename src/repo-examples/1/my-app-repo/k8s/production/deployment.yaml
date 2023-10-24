@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-petclinic-plain
+  namespace: argocd-production
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-petclinic-plain
+  template:
+    metadata:
+      labels:
+        app: spring-petclinic-plain
+    spec:
+      containers:
+        - name: spring-petclinic-plain
+          image: localhost:30000/petclinic-plain:1
+          ports:
+            - containerPort: 8080
+              name: http
+          env:
+            - name: MANAGEMENT_SERVER_PORT
+              value: "9080"
+            - name: SPRING_MESSAGES_BASENAME
+              value: "file:/tmp/messages/messages"
+            - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK
+              value: INFO
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /actuator/health/readiness
+              port: 9080
+              scheme: HTTP
+          volumeMounts:
+            - name: messages
+              mountPath: /tmp/messages
+      volumes:
+        - name: messages
+          configMap:
+            name: messages

@@ -202,7 +202,7 @@ The diagrams have been created with [tree2svg](https://github.com/schnatterer/tr
   * Mixed repo patterns
   * ArgoCD **and** Flux examples
 
-![](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/docs/image-sources/repo-examples/2.svg)
+![](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/repo-examples/2.svg)
 
 
 ### ArgoCD autopilot
@@ -219,7 +219,7 @@ The diagrams have been created with [tree2svg](https://github.com/schnatterer/tr
   * In the future: a lot more automation
     and YAML creation
 
-![](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/docs/image-sources/repo-examples/3.svg)
+![](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/repo-examples/3.svg)
 
 
 ### Flux Monorepo
@@ -233,7 +233,7 @@ The diagrams have been created with [tree2svg](https://github.com/schnatterer/tr
 * **Linking**: `kustomization.yaml`, Flux `Kustomization`
 * **Features**: cross-cutting infra
 
-![](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/docs/image-sources/repo-examples/4.svg)
+![](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/repo-examples/4.svg)
 
 
 ### Flux repo per team/tenant
@@ -247,7 +247,7 @@ The diagrams have been created with [tree2svg](https://github.com/schnatterer/tr
 * **Linking**: `kustomization.yaml`, Flux `Kustomization`
 * **Features**: cross-cutting infra
 
-![](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/docs/image-sources/repo-examples/5.svg)
+![](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/repo-examples/5.svg)
 
 
 ### 📕 Path to GitOps examples
@@ -269,7 +269,7 @@ The diagrams have been created with [tree2svg](https://github.com/schnatterer/tr
   * Cross-cutting infra and app(s)
   * ArgoCD **and** Flux examples
 
-![](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/docs/image-sources/repo-examples/6.svg)
+![](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/repo-examples/6.svg)
 
 
 ### Environment variations
@@ -281,7 +281,7 @@ The diagrams have been created with [tree2svg](https://github.com/schnatterer/tr
   * Env variants for a single app
   * Promotion "via cp"
 
-![](https://raw.githubusercontent.com/cloudogu/gitops-talks/97053fc/docs/image-sources/repo-examples/7.svg)
+![](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/repo-examples/7.svg)
 
 ### Others
 

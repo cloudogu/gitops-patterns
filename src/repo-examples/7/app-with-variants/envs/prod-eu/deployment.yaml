@@ -1,0 +1,16 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-deployment
+spec:
+  template:
+    spec:
+      containers:
+      - name: webserver-simple
+        env:
+        - name: ENV
+          value: "prod-asia"
+        - name: GPU_ENABLED
+          value: "1"
+      

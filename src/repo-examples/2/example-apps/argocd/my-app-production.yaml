@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: petclinic-plain
+  namespace: argocd-staging
+spec:
+  destination:
+    namespace: argocd-staging
+    server: https://kubernetes.default.svc
+  project: example-apps
+  source:
+    path: apps/spring-petclinic-plain/staging
+    repoURL: http://scmm-scm-manager.default.svc.cluster.local/scm/repo/argocd/example-apps
+    targetRevision: main
+    directory:
+      recurse: true
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: petclinic-plain
+  namespace: argocd-production
+spec:
+  destination:
+    namespace: argocd-production
+    server: https://kubernetes.default.svc
+  project: example-apps
+  source:
+    path: apps/spring-petclinic-plain/production
+    repoURL: http://scmm-scm-manager.default.svc.cluster.local/scm/repo/argocd/example-apps
+    targetRevision: main
+    directory:
+      recurse: true
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

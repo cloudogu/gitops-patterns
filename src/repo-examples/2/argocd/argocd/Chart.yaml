@@ -1,0 +1,9 @@
+apiVersion: v2
+name: argocd
+version: 1.0.0
+description: Wraps the upstream argo-cd helm chart
+dependencies:
+  - name: argo-cd
+    version: 5.29.1 # run `helm dep update .` in this folder before changing and pushing version
+    repository: https://argoproj.github.io/argo-helm
+    # Information about helm chart here: https://artifacthub.io/packages/helm/argo/argo-cd

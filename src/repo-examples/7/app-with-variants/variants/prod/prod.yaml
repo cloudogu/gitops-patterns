@@ -1,0 +1,19 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-deployment
+spec:
+  template:
+    spec:
+      containers:
+      - name: webserver-simple
+        env:
+        - name: ENV_TYPE
+          value: "non-prod"
+        - name: PAYPAL_URL
+          value: "staging2.paypal.com"
+        - name: DB_USER
+          value: "non-prod-user"
+        - name: DB_PASSWORD
+          value: "non-prod-password"    

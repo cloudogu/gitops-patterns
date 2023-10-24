@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd
+  annotations:
+    # Only app with the sync-status-unknown alert, so that we only get one alert when SCM is not reachable.
+    # Otherwise, there would be a spam wave by every application everytime the SCM is not reachable.
+    notifications.argoproj.io/subscribe.on-sync-status-unknown.email:  infra@example.org
+# finalizer disabled, because otherwise everything under this Application would be deleted as well, if this Application is deleted by accident
+#  finalizers:
+#    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  project: argocd
+  source:
+    path: argocd/
+    repoURL: http://scmm-scm-manager.default.svc.cluster.local/scm/repo/argocd/argocd
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: false # is set to false to prevent argo from deleting itself
+      selfHeal: true

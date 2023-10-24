@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: example-apps
+  namespace: argocd
+  annotations:
+    notifications.argoproj.io/subscribe.email: app-team@example.org
+spec:
+  description: Contains examples of end-user applications
+  destinations:
+  - namespace: argocd-production
+    server: https://kubernetes.default.svc
+  - namespace: argocd-staging
+    server: https://kubernetes.default.svc
+  sourceRepos:
+  - http://scmm-scm-manager.default.svc.cluster.local/scm/repo/argocd/example-apps
+  - http://scmm-scm-manager.default.svc.cluster.local/scm/repo/argocd/nginx-helm-dependency
+  
+  
+  # allow to only see application resources from the specified namespace
+  sourceNamespaces:
+    - 'argocd-staging'
+    - 'argocd-production'
+
+  # Allow all namespaced-scoped resources to be created
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
+
+  # Deny all cluster-scoped resources from being created. Least privilege.
+  clusterResourceWhitelist:

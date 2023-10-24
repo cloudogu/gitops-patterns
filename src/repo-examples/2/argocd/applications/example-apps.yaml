@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: example-apps
+  namespace: argocd
+# finalizer disabled, because otherwise everything under this Application would be deleted as well, if this Application is deleted by accident
+#  finalizers:
+#    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  project: argocd
+  source:
+    path: argocd/
+    repoURL: http://scmm-scm-manager.default.svc.cluster.local/scm/repo/argocd/example-apps
+    targetRevision: main
+    directory:
+      recurse: true
+  syncPolicy:
+    automated:
+      prune: false # is set to false to prevent projects to be deleted by accident
+      selfHeal: true

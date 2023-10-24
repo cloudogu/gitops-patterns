@@ -1,0 +1,24 @@
+# This is the root Applications, which manages all other applications with the app-of-apps-pattern.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bootstrap
+  namespace: argocd
+# finalizer disabled, because otherwise everything under this Application would be deleted as well, if this Application is deleted by accident
+#  finalizers:
+#    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  project: argocd
+  source:
+    path: applications/
+    repoURL: http://scmm-scm-manager.default.svc.cluster.local/scm/repo/argocd/argocd
+    targetRevision: main
+    directory:
+      recurse: true
+  syncPolicy:
+    automated:
+      prune: false # is set to false to prevent projects to be deleted by accident
+      selfHeal: true

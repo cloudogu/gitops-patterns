@@ -1,0 +1,11 @@
+{
+  "appName": "my-app",
+  "userGivenName": "my-app",
+  "destNamespace": "default",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/my-app/overlays/staging",
+  "srcRepoURL": "https://github.com/schnatterer/argocd-autopilot-example.git",
+  "srcTargetRevision": "",
+  "labels": null,
+  "annotations": null
+}
