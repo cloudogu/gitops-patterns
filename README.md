@@ -30,7 +30,7 @@ PRs welcome!
   - [Repository structure](#repository-structure)
     - [Monorepo](#monorepo)
     - [Repo per Team](#repo-per-team)
-    - [Repo per Application](#repo-per-app) (can be implemented via [Config-Code-Separation](#config-code-separation), [Config Replication](#config-replication) or 
+    - [Repo per Application](#repo-per-app) (can be implemented via [Config-Code-Separation](#config-code-separation), [Config Replication](#config-replication), [Config Split](#config-split) or 
 [Repo Pointer](#repo-pointer))
     - [Repo per Environment](#repo-per-env)
   - [Promotion](#promotion)
@@ -120,12 +120,21 @@ More Patterns:
 * **Repo per Application** [^2][^4] <span id="repo-per-app"/>    
   Implementations:
   * Config-Code-Separation [^19] <span id="config-code-separation"/>  
+    Keep code in app repo, config in config repo   
     <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-separation.puml&fmt=svg">
-  * Config replication [^3]  <span id="config-replication"/>  
+  * Config replication [^3] <span id="config-replication"/>  
+    Keep config in app repo and have CI server replicate it to the config repo  
     <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-replication.puml&fmt=svg">  
     Alternative implementation: replicate to OCI as a "GitOps Cache":  
     <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-replication-oci.puml&fmt=svg">  
-  * Repo pointer [^6][^3]  <span id="repo-pointer"/>  
+  * Config Split [^20] <span id="config-split"/>  
+    Keep parts of the config in app repo (e.g. helm chart), and rest in config repo (e.g. value.yamls for different envs)  
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-split-git.puml&fmt=svg">  
+    Alternative implementations: have CI server push chart to OCI or helm registry  
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-split-oci.puml&fmt=svg">  
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-split-helm-reg.puml&fmt=svg">  
+    
+  * Repo pointer [^6][^3] <span id="repo-pointer"/>  
     <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-pointer.puml&fmt=svg">
 * **Repo per environment** [^4] <span id="repo-per-env"/>  
   Synonym: Environment per repository[^5], Repo per Stage
@@ -326,3 +335,4 @@ Here are some other examples that we haven't had a chance to look at in more det
 [^17]: Documentation [ArgoCD: Cluster Bootstrapping - App Of Apps Pattern](https://github.com/argoproj/argo-cd/blob/v2.8.4/docs/operator-manual/cluster-bootstrapping.md#app-of-apps-pattern)  
 [^18]: Talk  [Control Plane, Service, or Both? – Argo CD Multi-Cluster Architectures - Nicholas Morey, Akuity](https://www.youtube.com/watch?v=vyaZv4yM3_o), Article [How many do you need? - Argo CD Architectures Explained](https://akuity.io/blog/argo-cd-architectures-explained/) by Nicholas Morey  
 [^19]: Documentation [Argo CD: Best Practices](https://github.com/argoproj/argo-cd/blob/v2.8.4/docs/user-guide/best_practices.md#separating-config-vs-source-code-repositories)  
+[^20]: Discussion on LinkedIn: [Benjamin Ruland and Johannes Schnatterer](https://www.linkedin.com/feed/update/urn:li:activity:7121084907526713346?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7121084907526713346%2C7121143258256166912%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287121143258256166912%2Curn%3Ali%3Aactivity%3A7121084907526713346%29)  
