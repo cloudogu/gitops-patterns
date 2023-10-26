@@ -79,11 +79,16 @@ PRs welcome!
     <td><img width="50px" src="https://cloudogu.com/assets/blog/2023/gitops-patterns-5_150x150-bf3aeb38358d09ba8b2f98bb721207e942bbf5e67b9af6f7cc4c70cda8cb9a27707adefe73a3dfe343ba744b91c0bc6e59ace749efaa8dace729be95b75d9a38.png" alt="article icon"/></td>
     <td><a href="https://cloudogu.com/en/blog/gitops-repository-patterns-part-5-wiring-patterns">Part 5️⃣: Wiring patterns + conclusion</a></td>
   </tr>
+  <tr>
+    <td><img width="50px" src="https://cloudogu.com/assets/blog/2023/gitops-patterns-6_150x150-fdb06341511e6699307a4f913b9d5635cbaefa432029c468c58476d5c6108485a8f50ce68202a5baf92743ae1e9388243bec81cd206de2bc40c647612b46318f.png" alt="article icon"/></td>
+    <td><a href="https://cloudogu.com/de/blog/gitops-repository-patterns-part-6-examples">Part 6️⃣: Example Repositories</a></td>
+  </tr>
 </table>
 
 ## Pattern categories
 
-Let's group GitOps patterns into separate categories to make them easier to grasp.
+Let's group GitOps patterns into separate categories to make them easier to grasp.  
+See also [part 1️⃣ of the article series](https://cloudogu.com/en/blog/gitops-repository-patterns-part-1-introduction).
 
 * **Operator deployment**: GitOps operators ↔ Clusters/Namespaces
 * **Repository**: How many repos?
@@ -95,6 +100,8 @@ Let's group GitOps patterns into separate categories to make them easier to gras
 ## GitOps Patterns
 
 ### Operator deployment
+
+See also [part 2️⃣ of the article series](https://cloudogu.com/en/blog/gitops-repository-patterns-part-2-operator-deployment-patterns).
 
 * **Hub and Spoke** [^1][^2] 1 Operator : n Clusters  <span id="hub-and-spoke"/>    
   Synonyms: Management Cluster [^18] - sounds familiar, e.g. from Cluster API, but it requires a cluster. In SaaS/PaaS constellations, the central instance may not even be operated in a cluster. Therefore, the term "Hub and Spoke" seems more fitting to us, especially since it is also well known from computer networks or logistics.  
@@ -111,6 +118,8 @@ More Patterns:
 * Hybrids of Hub and Spoke and Instance per Cluster patterns: "Instance per Logical Group" and "Argo Managing more Argos".[^18]
 
 ### Repository structure
+
+See also [part 3️⃣ of the article series](https://cloudogu.com/en/blog/gitops-repository-patterns-part-3-repository-patterns).
 
 * **Monorepo** [^2][^4] <span id="monorepo"/>  
   Opposite: polyrepo [^2]
@@ -140,6 +149,8 @@ More Patterns:
 
 
 ### Promotion
+
+See also [part 4️⃣ of the article series](https://cloudogu.com/en/blog/gitops-repository-patterns-part-4-promotion-patterns).
 
 We understand the term "promotion" as the process of deploying applications to different environments.  
 Sometimes, the term "promotion" is prefixed with other words: [Release](https://codefresh.io/blog/how-to-model-your-gitops-environments-and-promote-releases-between-them/)/[Application](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro)/[Environment](https://github.com/kostis-codefresh/gitops-environment-promotion)/[Workload](https://www.weave.works/blog/kubernetes-workload-promotion-in-gitops-cd-pipelines)/[Change](https://twitter.com/argoproj/status/1642527308450873345).
@@ -185,6 +196,8 @@ For promotion, we see different sets of patterns:
 
 ### Wiring
 
+See also [part 5️⃣ of the article series](https://cloudogu.com/en/blog/gitops-repository-patterns-part-5-wiring-patterns).
+
 * **Bootstrapping** <span id="bootstrapping"/>,
   e.g. using `kubectl` or operator-specific CLI such as `flux` or `argocd-autopilot`
 * **Linking** <span id="linking"/>
@@ -194,7 +207,10 @@ For promotion, we see different sets of patterns:
 
 ## Public GitOps Repo Examples
 
-See also [^3].  
+See also [^3].
+
+See also [part 6️⃣ of the article series](https://cloudogu.com/de/blog/gitops-repository-patterns-part-6-examples).
+
 The diagrams have been created with [tree2svg](https://github.com/schnatterer/tree2svg).
 
 ### GitOps Playground
