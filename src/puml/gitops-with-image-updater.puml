@@ -35,8 +35,10 @@ rectangle "<$docker>\nOCI Registry" as registry
 user -> gitRepo : push
 gitRepo <-- ciServer : pull
 ciServer -> registry : push
-k8s --> registry : pull\n+ watch
-gitRepo <- k8s : pull\n+ push
+k8s --> registry : pull
+k8s -[#red]-> registry : <color:red>watch
+k8s -> gitRepo : pull
+k8s -[#red]> gitRepo : <color:red>push
 k8s -> k8s : deploy
 
 skinparam actor {

@@ -21,12 +21,10 @@ skinparam sequenceArrowColor COLOR_ABOVE_TRANSPARENT_BACKGROUND
 
 skinparam actorStyle awesome
 
-together {
-    actor Developer as user
-    rectangle "<$git>\nApp Repo" as appRepo
-    rectangle "<$git>\nConfig Repo" as configRepo
-    rectangle "<$jenkins>\nCI Server" as ciServer
-}
+actor Developer as user
+rectangle "<$git>\nApp Repo" as appRepo
+rectangle "<$git>\nConfig Repo" as configRepo
+rectangle "<$jenkins>\nCI Server" as ciServer
 
 rectangle "<$k8s>\nK8s Cluster" as k8s {
     rectangle "<$sync>\nGitOps\noperator" as operator
@@ -36,7 +34,8 @@ rectangle "<$docker>\nOCI Registry" as registry
 user -> appRepo :  push\ncode\n+config
 appRepo -[hidden]> configRepo
 appRepo <-- ciServer : pull
-configRepo <-- ciServer : push\nconfig\n+create PR
+configRepo <-- ciServer : push\nconfig
+configRepo <--[#red] ciServer : <color:red>create PR
 ciServer -> registry : push
 k8s --> registry : pull
 configRepo <- k8s : pull

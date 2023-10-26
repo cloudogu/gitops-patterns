@@ -35,9 +35,9 @@ rectangle "<$k8s>\nK8s Cluster" as k8s {
 user -> gitRepo : push
 gitRepo <-- ciServer : pull
 ciServer -> registry : push
-renovate -> registry : watch
+renovate -[#red]> registry : <color:red>watch
 k8s --> registry : pull
-gitRepo <- renovate : create PR
+gitRepo <-[#red] renovate : <color:red>create PR
 gitRepo <- k8s : pull
 k8s -> k8s : deploy
 
