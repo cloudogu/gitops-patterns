@@ -136,7 +136,7 @@ See also [part 3️⃣ of the article series](https://cloudogu.com/en/blog/gitop
   * Config replication [^3] <span id="config-replication"/>  
     Keep config in app repo and have CI server replicate it to the config repo  
     <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/config-replication.puml&fmt=svg">  
-    Alternative implementation: replicate to OCI as a "GitOps Cache":  
+    Alternative implementation: replicate to OCI as a "GitOps Cache"[^21]:  
     <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/config-replication-oci.puml&fmt=svg">  
   * Config Split [^20] <span id="config-split"/>  
     Keep parts of the config in app repo (e.g. helm chart), and rest in config repo (e.g. value.yamls for different envs)  
@@ -350,4 +350,5 @@ Here are some other examples that we haven't had a chance to look at in more det
 [^17]: Documentation [ArgoCD: Cluster Bootstrapping - App Of Apps Pattern](https://github.com/argoproj/argo-cd/blob/v2.8.4/docs/operator-manual/cluster-bootstrapping.md#app-of-apps-pattern)  
 [^18]: Talk  [Control Plane, Service, or Both? – Argo CD Multi-Cluster Architectures - Nicholas Morey, Akuity](https://www.youtube.com/watch?v=vyaZv4yM3_o), Article [How many do you need? - Argo CD Architectures Explained](https://akuity.io/blog/argo-cd-architectures-explained/) by Nicholas Morey  
 [^19]: Documentation [Argo CD: Best Practices](https://github.com/argoproj/argo-cd/blob/v2.8.4/docs/user-guide/best_practices.md#separating-config-vs-source-code-repositories)  
-[^20]: Discussion on LinkedIn: [Benjamin Ruland and Johannes Schnatterer](https://www.linkedin.com/feed/update/urn:li:activity:7121084907526713346?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7121084907526713346%2C7121143258256166912%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287121143258256166912%2Curn%3Ali%3Aactivity%3A7121084907526713346%29)  
+[^20]: [Discussion on LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7121084907526713346?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7121084907526713346%2C7121143258256166912%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287121143258256166912%2Curn%3Ali%3Aactivity%3A7121084907526713346%29) Benjamin Ruland and Johannes Schnatterer  
+[^21]: Talk: [Mastering GitOps 2023: Keynote: GitOps Emerging Developments and Predictions](https://vimeo.com/805175348) by Alexis Richardson  
