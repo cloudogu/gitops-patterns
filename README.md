@@ -30,8 +30,7 @@ PRs welcome!
   - [Repository structure](#repository-structure)
     - [Monorepo](#monorepo)
     - [Repo per Team](#repo-per-team)
-    - [Repo per Application](#repo-per-app) (can be implemented via [Config-Code-Separation](#config-code-separation), [Config Replication](#config-replication), [Config Split](#config-split) or 
-[Repo Pointer](#repo-pointer))
+    - [Repo per Application](#repo-per-app) (can be implemented via [Repo Separation](#repo-separation), [Repo Pointer](#repo-pointer),  [Config Replication](#config-replication) or [Config Split](#config-split))
     - [Repo per Environment](#repo-per-env)
   - [Promotion](#promotion)
     - [Environments](#environments)
@@ -119,23 +118,23 @@ More Patterns:
   More generalized: Team ➡️ Tenant[^4]
 * **Repo per Application** [^2][^4] <span id="repo-per-app"/>    
   Implementations:
-  * Config-Code-Separation [^19] <span id="config-code-separation"/>  
+  * Repo separation [^19] <span id="repo-separation"/>  
     Keep code in app repo, config in config repo   
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-separation.puml&fmt=svg">
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/repo-separation.puml&fmt=svg">
+  * Repo pointer [^6][^3][^4] <span id="repo-pointer"/>  
+    Keep config in app repo and add a pointer from config repo (e.g. Argo CD `Application` or a Flux `GitRepository`+`Kustomization`)  
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/repo-pointer.puml&fmt=svg">
   * Config replication [^3] <span id="config-replication"/>  
     Keep config in app repo and have CI server replicate it to the config repo  
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-replication.puml&fmt=svg">  
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/config-replication.puml&fmt=svg">  
     Alternative implementation: replicate to OCI as a "GitOps Cache":  
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-replication-oci.puml&fmt=svg">  
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/config-replication-oci.puml&fmt=svg">  
   * Config Split [^20] <span id="config-split"/>  
     Keep parts of the config in app repo (e.g. helm chart), and rest in config repo (e.g. value.yamls for different envs)  
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-split-git.puml&fmt=svg">  
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/repo-split-git.puml&fmt=svg">  
     Alternative implementations: have CI server push chart to OCI or helm registry  
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-split-oci.puml&fmt=svg">  
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-split-helm-reg.puml&fmt=svg">  
-    
-  * Repo pointer [^6][^3] <span id="repo-pointer"/>  
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-pointer.puml&fmt=svg">
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/repo-split-oci.puml&fmt=svg">  
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/repo-split-helm-reg.puml&fmt=svg">  
 * **Repo per environment** [^4] <span id="repo-per-env"/>  
   Synonym: Environment per repository[^5], Repo per Stage
 
@@ -178,11 +177,11 @@ For promotion, we see different sets of patterns:
   Who updates image (version) in GitOps repo, creates branch and PR?
   * Manual: Human pushes branch and create PR 🥵
   * CI Server: Build job pushes branch, creates PR  
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-app-repo-ci.puml&fmt=svg">  
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/config-update-ci.puml&fmt=svg">  
   * Image Updater: Operator pushes branch, create PR manually  
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-image-updater.puml&fmt=svg">
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/config-update-image-updater.puml&fmt=svg">
   * Dependency Bot: Bot pushes branch, creates PR  
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/gitops-with-renovate.puml&fmt=svg">
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/config-update-dependency-bot.puml&fmt=svg">
 
 ### Wiring
 
@@ -319,7 +318,7 @@ Here are some other examples that we haven't had a chance to look at in more det
 [^1]: Article [A Comprehensive Overview of Argo CD Architectures – 2023](https://codefresh.io/blog/a-comprehensive-overview-of-argo-cd-architectures-2023/) by Dan Garfield  
 [^2]: Article/Book [How to set up your GitOps directory structure](https://developers.redhat.com/articles/2022/09/07/how-set-your-gitops-directory-structure) by Christian Hernandez  
 [^3]: Slides [The perfect GitOps process: repos, folders, stages, patterns](https://cloudogu.github.io/gitops-talks/2023-03-mastering-gitops/#/) by Johannes Schnatterer  
-[^4]: Documentation [Flux | Ways of structuring your repositories](https://fluxcd.io/flux/guides/repository-structure/)  
+[^4]: Documentation [Flux | Ways of structuring your repositories](https://github.com/fluxcd/website/blob/3555c45/content/en/flux/guides/repository-structure.md#repo-per-app)  
 [^5]: Lesson [GitOps at Scale Lesson series - Git repository strategies](https://learning.codefresh.io/path-player?courseid=gitops-scale&unit=gitops-scale_63a08184b7f67Unit) by Codefresh (paywalled)  
 [^6]: Talk [GitOps: Core Concepts & Ways of Structuring Your Repos](https://www.youtube.com/watch?v=vLNZA_2Na_s) by Pinky Ravi and Scott Rigby  
 [^7]: Article [Stop Using Branches for Deploying to Different GitOps Environments](https://codefresh.io/blog/how-to-model-your-gitops-environments-and-promote-releases-between-them/) by Kostis Kapelonis  
