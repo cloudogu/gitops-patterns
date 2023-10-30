@@ -22,7 +22,7 @@ skinparam sequenceArrowColor COLOR_ABOVE_TRANSPARENT_BACKGROUND
 skinparam actorStyle awesome
 
 together {
-    actor Developer as user
+    actor " " as user
     rectangle "<$git>\nApp Repo" as appRepo
     rectangle "<$git>\nConfig Repo" as configRepo
     rectangle "<$jenkins>\nCI Server" as ciServer
