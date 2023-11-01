@@ -8,10 +8,10 @@
 !includeurl ICONURL/devicons/git.puml
 !includeurl ICONURL/font-awesome-5/jenkins.puml
 !includeurl ICONURL/font-awesome-5/sync.puml
-!includeurl ICONURL/font-awesome-5/dharmachakra.puml
 
 !define CLOUDOGUURL https://raw.githubusercontent.com/cloudogu/plantuml-cloudogu-sprites/master
 !includeurl CLOUDOGUURL/tools/k8s.puml
+!includeurl CLOUDOGUURL/tools/helm.puml
 
 !define CLOUDOGU_BLUE #23a3dd
 !define COLOR_ABOVE_TRANSPARENT_BACKGROUND #777
@@ -32,19 +32,19 @@ together {
 rectangle "<$k8s>\nK8s Cluster" as k8s {
     rectangle "<$sync>\nGitOps\noperator" as operator
 }
-rectangle "<$dharmachakra>\nHelm Registry" as helmRegistry
+rectangle "<$helm>\nHelm Repo" as helmRepo
 rectangle "<$docker>\nOCI Registry" as ociRegistry
 
 user -[#red]> appRepo : push\ncode\n<color:red>+chart
-user -[#red]> configRepo : <color:red>push values.yaml per env
+user -[#red]> configRepo : <color:red>push helm values per env
 appRepo -[hidden]> configRepo
 appRepo <-- ciServer : pull
-ciServer -[#red]> helmRegistry : <color:red>push\n<color:red>chart
+ciServer -[#red]> helmRepo : <color:red>push\n<color:red>chart
 ciServer --> ociRegistry : push\nimage
 configRepo <- ciServer : push new\nimage version
-k8s -[#red]> helmRegistry : <color:red>pull\n<color:red>chart
+k8s -[#red]> helmRepo : <color:red>pull\n<color:red>chart
 k8s -> ociRegistry : pull\nimage
-k8s -[#red]> configRepo : <color:red>pull\n<color:red>values.yaml
+k8s -[#red]> configRepo : <color:red>pull\n<color:red> config
 
 k8s -> k8s : deploy
 

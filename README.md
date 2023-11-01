@@ -140,10 +140,10 @@ See also [part 3️⃣ of the article series](https://cloudogu.com/en/blog/gitop
     <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/config-replication-oci.puml&fmt=svg">  
   * Config Split [^20] <span id="config-split"/>  
     Keep parts of the config in app repo (e.g. helm chart), and rest in config repo (e.g. value.yamls for different envs)  
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/repo-split-git.puml&fmt=svg">  
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/config-split-git.puml&fmt=svg">  
     Alternative implementations: have CI server push chart to OCI or helm registry  
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/repo-split-oci.puml&fmt=svg">  
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/repo-split-helm-reg.puml&fmt=svg">  
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/config-split-oci.puml&fmt=svg">  
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/config-split-helm-repo.puml&fmt=svg">  
 * **Repo per environment** [^4] <span id="repo-per-env"/>  
   Synonym: Environment per repository[^5], Repo per Stage
 
