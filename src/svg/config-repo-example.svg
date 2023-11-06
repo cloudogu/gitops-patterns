@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="130">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="110">
 	<defs>
 		<g id="group_0">
 			<text fill="#777" font-size="13" font-family="'DejaVu Sans Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'" x="8" y="26.4375">
@@ -10,7 +10,7 @@
 				 
 			</text>
 			<text fill="#23A3DD" font-size="13" font-weight="600" font-family="'DejaVu Sans Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'" x="38.8125" y="26.4375">
-				gitops-repo
+				config-repo
 			</text>
 			<text fill="#777" font-size="13" font-family="'DejaVu Sans Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'" x="8" y="42">
 				 

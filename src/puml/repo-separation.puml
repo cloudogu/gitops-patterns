@@ -22,7 +22,7 @@ skinparam sequenceArrowColor COLOR_ABOVE_TRANSPARENT_BACKGROUND
 skinparam actorStyle awesome
 
 together {
-    actor Developer as user
+    actor " " as user
     rectangle "<$git>\nApp Repo" as appRepo
     rectangle "<$git>\nConfig Repo" as configRepo
     rectangle "<$jenkins>\nCI Server" as ciServer
@@ -38,7 +38,7 @@ user -[#red]> configRepo : <color:red>push config
 appRepo -[hidden]> configRepo
 appRepo <-- ciServer : pull
 ciServer -> registry : push\nimage
-configRepo <- ciServer : push new\nimage version
+'configRepo <- ciServer : push new\nimage version
 k8s --> registry : pull\nimage
 configRepo <- k8s : pull\nconfig
 k8s -> k8s : deploy
