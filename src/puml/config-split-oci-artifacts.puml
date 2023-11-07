@@ -20,7 +20,6 @@ skinparam DefaultFontColor COLOR_ABOVE_TRANSPARENT_BACKGROUND
 skinparam sequenceArrowColor COLOR_ABOVE_TRANSPARENT_BACKGROUND
 
 skinparam actorStyle awesome
-
 together {
     actor " " as user
     rectangle "<$git>\nApp Repo" as appRepo
@@ -33,16 +32,17 @@ rectangle "<$k8s>\nK8s Cluster" as k8s {
 }
 rectangle "<$docker>\nOCI Registry" as registry
 
-user -> appRepo : push\ncode\n<color:red>+chart
-user -[#red]> configRepo : <color:red>push helm values per env
+user -> appRepo :  push
 appRepo -[hidden]> configRepo
 appRepo <-- ciServer : pull
 ciServer -> registry : push\nimage
-k8s -[#red]> appRepo : <color:red>pull\n<color:red>chart
-k8s --> registry : pull\nimage
-k8s -> configRepo : pull\n config
+user -[#red]> configRepo : <color:red>push config per env
+ciServer -[#red]> registry : <color:red>push\n<color:red>config
+k8s --> registry : pull image
+k8s -[#red]-> registry : <color:red>pull\n<color:red>config
+configRepo <- k8s : pull config
+registry <-[#red] configRepo : <color:red>point to
 k8s -> k8s : deploy
-
 
 skinparam actor {
     BackgroundColor CLOUDOGU_BLUE

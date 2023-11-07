@@ -30,7 +30,7 @@ PRs welcome!
   - [Repository structure](#repository-structure)
     - [Monorepo](#monorepo)
     - [Repo per Team](#repo-per-team)
-    - [Repo per Application](#repo-per-app) (can be implemented via [Repo Separation](#repo-separation), [Repo Pointer](#repo-pointer),  [Config Replication](#config-replication) or [Config Split](#config-split))
+    - [Repo per Application](#repo-per-app) (can be implemented via [Repo Separation](#repo-separation), [Config Replication](#config-replication), [Repo Pointer](#repo-pointer) or [Config Split](#config-split))
     - [Repo per Environment](#repo-per-env)
   - [Promotion](#promotion)
     - [Environments](#environments)
@@ -130,20 +130,25 @@ See also [part 3️⃣ of the article series](https://cloudogu.com/en/blog/gitop
   * Repo separation [^19] <span id="repo-separation"/>  
     Keep code in app repo, config in config repo   
     <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/repo-separation.puml&fmt=svg">
-  * Repo pointer [^6][^3][^4] <span id="repo-pointer"/>  
-    Keep config in app repo and add a pointer from config repo (e.g. Argo CD `Application` or a Flux `GitRepository`+`Kustomization`)  
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/repo-pointer.puml&fmt=svg">
   * Config replication [^3] <span id="config-replication"/>  
     Keep config in app repo and have CI server replicate it to the config repo  
     <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/config-replication.puml&fmt=svg">  
-    Alternative implementation: replicate to OCI as a "GitOps Cache"[^21]:  
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/config-replication-oci.puml&fmt=svg">  
+  * Repo pointer [^6][^3][^4] <span id="repo-pointer"/>  
+    Keep the whole config in app repo and add a pointer from config repo (e.g. Argo CD `Application` or a Flux `GitRepository`+`Kustomization`), avoiding redundancy   
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/repo-pointer.puml&fmt=svg">
   * Config Split [^20] <span id="config-split"/>  
-    Keep parts of the config in app repo (e.g. helm chart), and rest in config repo (e.g. value.yamls for different envs)  
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/config-split-git.puml&fmt=svg">  
-    Alternative implementations: have CI server push chart to OCI or helm registry  
-    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/config-split-oci.puml&fmt=svg">  
+    Keep parts of the config in app repo (e.g. helm chart or kustomize base), and rest in config repo (e.g. `value.yaml`s or overlays for different envs).  
+    Then have the config repo point to the app repo (e.g. via ArgoCD `Application` or Flux `Kustomization`).  
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/config-split-helm-git.puml&fmt=svg">  
+    Alternative implementations: have CI server push chart to **helm registry**  
     <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/config-split-helm-repo.puml&fmt=svg">  
+    Or use push **helm chart to OCI registry**  
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/config-split-helm-oci.puml&fmt=svg">  
+    Or use any config management tool (e.g. `helm template`, `kustomize build`, `kubectl kustomize`, [jsonnet](https://jsonnet.org/), [cuelang](https://cuelang.org/), [timoni](https://timoni.sh/), etc. ) on the CI server for pushing the final manifests as **OCI artifacts[^22] to the registry**.  
+    Then have the config repo point to the OCI artifact (e.g. via Flux `Kustomization`).  
+    This way, the OCI registry functions as a "GitOps Cache"[^21]:  
+    The operator only needs to pull the artifacts instead of rendering/overlaying the config from different sources.   
+    <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/config-split-oci-artifacts.puml&fmt=svg">
 * **Repo per environment** [^4] <span id="repo-per-env"/>  
   Synonym: Environment per repository[^5], Repo per Stage
 
@@ -334,7 +339,7 @@ Here are some other examples that we haven't had a chance to look at in more det
 [^1]: Article [A Comprehensive Overview of Argo CD Architectures – 2023](https://codefresh.io/blog/a-comprehensive-overview-of-argo-cd-architectures-2023/) by Dan Garfield  
 [^2]: Article/Book [How to set up your GitOps directory structure](https://developers.redhat.com/articles/2022/09/07/how-set-your-gitops-directory-structure) by Christian Hernandez  
 [^3]: Slides [The perfect GitOps process: repos, folders, stages, patterns](https://cloudogu.github.io/gitops-talks/2023-03-mastering-gitops/#/) by Johannes Schnatterer  
-[^4]: Documentation [Flux | Ways of structuring your repositories](https://github.com/fluxcd/website/blob/3555c45/content/en/flux/guides/repository-structure.md#repo-per-app)  
+[^4]: Documentation [Flux | Ways of structuring your repositories](https://github.com/fluxcd/website/blob/a426979/content/en/flux/guides/repository-structure.md#repo-per-app)  
 [^5]: Lesson [GitOps at Scale Lesson series - Git repository strategies](https://learning.codefresh.io/path-player?courseid=gitops-scale&unit=gitops-scale_63a08184b7f67Unit) by Codefresh (paywalled)  
 [^6]: Talk [GitOps: Core Concepts & Ways of Structuring Your Repos](https://www.youtube.com/watch?v=vLNZA_2Na_s) by Pinky Ravi and Scott Rigby  
 [^7]: Article [Stop Using Branches for Deploying to Different GitOps Environments](https://codefresh.io/blog/how-to-model-your-gitops-environments-and-promote-releases-between-them/) by Kostis Kapelonis  
@@ -352,3 +357,4 @@ Here are some other examples that we haven't had a chance to look at in more det
 [^19]: Documentation [Argo CD: Best Practices](https://github.com/argoproj/argo-cd/blob/v2.8.4/docs/user-guide/best_practices.md#separating-config-vs-source-code-repositories)  
 [^20]: [Discussion on LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7121084907526713346?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7121084907526713346%2C7121143258256166912%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287121143258256166912%2Curn%3Ali%3Aactivity%3A7121084907526713346%29) Benjamin Ruland and Johannes Schnatterer  
 [^21]: Talk: [Mastering GitOps 2023: Keynote: GitOps Emerging Developments and Predictions](https://vimeo.com/805175348) by Alexis Richardson  
+[^22]: Documentation [Flux | OCI cheatsheet](https://github.com/fluxcd/website/blob/a426979/content/en/flux/cheatsheets/oci-artifacts.md)  
