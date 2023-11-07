@@ -33,15 +33,14 @@ rectangle "<$k8s>\nK8s Cluster" as k8s {
 }
 rectangle "<$docker>\nOCI Registry" as registry
 
-user -[#red]> appRepo : push\ncode\n<color:red>+chart
+user -> appRepo : push\ncode\n<color:red>+chart
 user -[#red]> configRepo : <color:red>push helm values per env
 appRepo -[hidden]> configRepo
 appRepo <-- ciServer : pull
 ciServer -> registry : push\nimage
-configRepo <- ciServer : push new\nimage version
 k8s -[#red]> appRepo : <color:red>pull\n<color:red>chart
 k8s --> registry : pull\nimage
-k8s -[#red]> configRepo : <color:red>pull\n<color:red> config
+k8s -> configRepo : pull\n config
 k8s -> k8s : deploy
 
 

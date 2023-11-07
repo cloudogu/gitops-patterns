@@ -38,7 +38,6 @@ user -[#red]> configRepo : <color:red>push config
 appRepo -[hidden]> configRepo
 appRepo <-- ciServer : pull
 ciServer -> registry : push\nimage
-'configRepo <- ciServer : push new\nimage version
 k8s --> registry : pull\nimage
 configRepo <- k8s : pull\nconfig
 k8s -> k8s : deploy

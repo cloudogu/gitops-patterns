@@ -41,10 +41,9 @@ appRepo -[hidden]> configRepo
 appRepo <-- ciServer : pull
 ciServer -[#red]> helmRepo : <color:red>push\n<color:red>chart
 ciServer --> ociRegistry : push\nimage
-configRepo <- ciServer : push new\nimage version
 k8s -[#red]> helmRepo : <color:red>pull\n<color:red>chart
 k8s -> ociRegistry : pull\nimage
-k8s -[#red]> configRepo : <color:red>pull\n<color:red> config
+k8s -> configRepo : pull\nconfig
 
 k8s -> k8s : deploy
 
