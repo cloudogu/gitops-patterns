@@ -3,8 +3,13 @@
 Create SVG using
 https://github.com/schnatterer/tree2svg
 
+e.g.
+```shell
+cd src/repo-examples
+LINE_COLOR=#777 ROOT_ICON='<i class="fab fa-git-alt fa-lg">' ./tree2svg/erd2svg.sh 6/ > 6-raw.svg 
+```
+
 Then:
-* Set draw.io to appearance | dark (otherwise the white objects will be imported in red!? 🤷‍♂️)
 * import into draw.io (tested with 20.8.16)  
   Remove svg width, adapt height empirically to be minimal before importing to draw.io
   (remove `content` and `deps`)
