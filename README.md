@@ -105,13 +105,13 @@ See also [part 2️⃣ of the article series](https://cloudogu.com/en/blog/gitop
 
 * **Hub and Spoke** [^1][^2] 1 Operator : n Clusters  <span id="hub-and-spoke"/>    
   Synonyms: Management Cluster [^18] - sounds familiar, e.g. from Cluster API, but it requires a cluster. In SaaS/PaaS constellations, the central instance may not even be operated in a cluster. Therefore, the term "Hub and Spoke" seems more fitting to us, especially since it is also well known from computer networks or logistics.  
-  ![Hube and spoke](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/svg/deployment-hub-and-spoke.svg)
+  ![Hube and spoke](src/svg/deployment-hub-and-spoke.svg)
 * **Instance Per Cluster** [^18] : 1 Operator : 1 Cluster <span id="standalone"/> <span id="instance-per-cluster"/>  
   Synonyms: Standalone [^1] - could apply to both "Instance per Cluster" and "Instance per Namespace"; does not define the relationship to clusters and namespaces precisely enough, as not every operator supports both deployment patterns.  
-  ![Instance Per Cluster](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/svg/deployment-instance-per-cluster.svg)
+  ![Instance Per Cluster](src/svg/deployment-instance-per-cluster.svg)
 * **Instance per Namespace**: n Operators : 1 Cluster <span id="namespaced"/> <span id="instance-per-namespace"/>  
   Synonyms: Namespaced [^3]  
-  ![Instance per Namespace](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/svg/deployment-instance-per-namespace.svg)
+  ![Instance per Namespace](src/svg/deployment-instance-per-namespace.svg)
 
 More Patterns:
 * Split-Instance[^1]: 1 Operator : n Clusters; components split between management and target clusters
@@ -187,8 +187,8 @@ For promotion, we see different sets of patterns:
     * via Umbrella Chart[^12] <span id="umbrella-chart"/>
     * via `helm template` on CI server
 * **Global Environments** vs **Environment per App**[^3]  <span id="global-vs-env-per-app"/>  
-  ![Global Envs](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/svg/global-environments.svg)
-  ![Env per app](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/svg/environment-per-app.svg)
+  ![Global Envs](src/svg/global-environments.svg)
+  ![Env per app](src/svg/environment-per-app.svg)
 * **Config update** <span id="config-update"/>  
   Who updates image (version) in GitOps repo, creates branch and PR?
   * Manual: Human pushes branch and create PR 🥵
@@ -233,7 +233,7 @@ The diagrams have been created with [tree2svg](https://github.com/schnatterer/tr
   * Mixed repo patterns
   * ArgoCD **and** Flux examples
 
-![](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/repo-examples/2.svg)
+![](src/repo-examples/2-with-ci.svg)
 
 
 ### ArgoCD autopilot
@@ -250,7 +250,7 @@ The diagrams have been created with [tree2svg](https://github.com/schnatterer/tr
   * In the future: a lot more automation
     and YAML creation
 
-![](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/repo-examples/3.svg)
+![](src/repo-examples/3.svg)
 
 
 ### Flux Monorepo
@@ -264,7 +264,7 @@ The diagrams have been created with [tree2svg](https://github.com/schnatterer/tr
 * **Linking**: `kustomization.yaml`, Flux `Kustomization`
 * **Features**: cross-cutting infra
 
-![](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/repo-examples/4.svg)
+![](src/repo-examples/4.svg)
 
 
 ### Flux repo per team/tenant
@@ -278,7 +278,7 @@ The diagrams have been created with [tree2svg](https://github.com/schnatterer/tr
 * **Linking**: `kustomization.yaml`, Flux `Kustomization`
 * **Features**: cross-cutting infra
 
-![](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/repo-examples/5.svg)
+![](src/repo-examples/5.svg)
 
 
 ### 📕 Path to GitOps examples
@@ -300,7 +300,7 @@ The diagrams have been created with [tree2svg](https://github.com/schnatterer/tr
   * Cross-cutting infra and app(s)
   * ArgoCD **and** Flux examples
 
-![](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/repo-examples/6.svg)
+![](src/repo-examples/6.svg)
 
 
 ### Environment variations
@@ -312,7 +312,7 @@ The diagrams have been created with [tree2svg](https://github.com/schnatterer/tr
   * Env variants for a single app
   * Promotion "via cp"
 
-![](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/repo-examples/7.svg)
+![](src/repo-examples/7.svg)
 
 ### Others
 
@@ -326,9 +326,9 @@ Here are some other examples that we haven't had a chance to look at in more det
 * GitOps process design ≈ GitOps repository structures,
 * GitOps Operator ≈ GitOps controller ≈ GitOps agent
 * Config Repo = GitOps repo, Infra repo, Payload repo  
-  ![Config repo example](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/svg/config-repo-example.svg)
+  ![Config repo example](src/svg/config-repo-example.svg)
 * App repo = Source code repo, Source repo  
-  ![App repo example](https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/svg/app-repo-example.svg)
+  ![App repo example](src/svg/app-repo-example.svg)
 * Environment = Stage
 * Folder = Directory
 * Templating ≈ Patching, Overlay, Rendering, Bundling, Packaging?
