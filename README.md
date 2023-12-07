@@ -39,7 +39,7 @@ PRs welcome!
       - [Branch per environment](#branch-per-env)
       - [Preview environments](#preview-env)
     - [Implementation](#implementation)
-      - [Configuration Management](#config-management), includes [Umbrella Chart](#umbrella-chart)
+      - [Configuration Management](#config-management), includes [Rendered Manifests](#rendered-manifests) and [Umbrella Chart](#umbrella-chart)
       - [Global Environments vs Environment per App](#global-vs-env-per-app)
       - [Config update](#config-update)
   - [Wiring](#wiring)
@@ -144,7 +144,7 @@ See also [part 3️⃣ of the article series](https://cloudogu.com/en/blog/gitop
     <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/config-split-helm-repo.puml&fmt=svg">  
     Or use push **helm chart to OCI registry**  
     <img width=50% src="https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/cloudogu/gitops-patterns/main/src/puml/config-split-helm-oci.puml&fmt=svg">  
-    Or use any config management tool (e.g. `helm template`, `kustomize build`, `kubectl kustomize`, [jsonnet](https://jsonnet.org/), [cuelang](https://cuelang.org/), [timoni](https://timoni.sh/), etc. ) on the CI server for pushing the final manifests as **OCI artifacts[^22] to the registry**.  
+    Or use any config management tool (e.g. `helm template`, `kustomize build`, `kubectl kustomize`, [jsonnet](https://jsonnet.org/), [cuelang](https://cuelang.org/), [timoni](https://timoni.sh/), etc. ) on the CI server for pushing the final manifests as **OCI artifacts[^22] to the registry** (Rendered Manifests Pattern[^23]).  
     Then have the config repo point to the OCI artifact (e.g. via Flux `Kustomization`).  
     This way, the OCI registry functions as a "GitOps Cache"[^21]:  
     The operator only needs to pull the artifacts instead of rendering/overlaying the config from different sources.   
@@ -181,11 +181,22 @@ For promotion, we see different sets of patterns:
 
 * **Configuration Management** <span id="config-management"/>  
   Synonyms: Templating, Patching, Overlay, Rendering
-  * Plain kustomize (`kustomization.yaml`) - "operator-agnostic" (works for Argo CD and Flux)
-  * Helm
-    * via CRD such as `HelmRelease` (Flux) or `Application` (ArgoCD)
-    * via Umbrella Chart[^12] <span id="umbrella-chart"/>
-    * via `helm template` on CI server
+  * Where to render the manifests?
+    * On the CI Server (**Rendered Manifests Pattern**[^23]) <span id="rendered-manifests"/>  
+      This pattern also fits nicely with Flux's OCI artifacts feature (see [Config split](#config-split)).
+    * On the GitOps Operator (**native**)
+  * Tools: 
+    * Kustomize
+      * Plain`kustomization.yaml` - **operator-agnostic** (native on Argo CD and Flux)
+      * ≠ Flux CRD `Kustomization` (native)
+      * `kustomize build` / `kubectl kustomize` via CI server (Rendered Manifests)
+    * Helm
+      * CRD such as `HelmRelease` (Flux native) or `Application` (ArgoCD native)
+      * Umbrella Chart[^12] <span id="umbrella-chart"/> (common on Argo CD, possible but unusual on Flux)
+      * `helm template` on CI server (Rendered Manifests)
+    * Others, e.g. Jsonnet, CueLang, Timoni
+      * Rendered Manifests Pattern
+      * Argo CD Config Management Plugins[^24] (JSonnet native)
 * **Global Environments** vs **Environment per App**[^3]  <span id="global-vs-env-per-app"/>  
   ![Global Envs](src/svg/global-environments.svg)
   ![Env per app](src/svg/environment-per-app.svg)
@@ -352,9 +363,11 @@ Here are some other examples that we haven't had a chance to look at in more det
 [^14]: Article [Git best practices: Workflows for GitOps deployments ](https://developers.redhat.com/articles/2022/07/20/git-workflows-best-practices-gitops-deployments) by Christian Hernandez  
 [^15]: Documentation [Vercel: Preview Deployments](https://vercel.com/docs/concepts/deployments/preview-deployments)  
 [^16]: Documentation [Netlify: Deploy Previews](https://docs.netlify.com/site-deploys/deploy-previews/)  
-[^17]: Documentation [ArgoCD: Cluster Bootstrapping - App Of Apps Pattern](https://github.com/argoproj/argo-cd/blob/v2.8.4/docs/operator-manual/cluster-bootstrapping.md#app-of-apps-pattern)  
+[^17]: Documentation [ArgoCD: Cluster Bootstrapping - App Of Apps Pattern](https://github.com/argoproj/argo-cd/blob/v2.9.3/docs/operator-manual/cluster-bootstrapping.md#app-of-apps-pattern)  
 [^18]: Talk  [Control Plane, Service, or Both? – Argo CD Multi-Cluster Architectures - Nicholas Morey, Akuity](https://www.youtube.com/watch?v=vyaZv4yM3_o), Article [How many do you need? - Argo CD Architectures Explained](https://akuity.io/blog/argo-cd-architectures-explained/) by Nicholas Morey  
 [^19]: Documentation [Argo CD: Best Practices](https://github.com/argoproj/argo-cd/blob/v2.8.4/docs/user-guide/best_practices.md#separating-config-vs-source-code-repositories)  
 [^20]: [Discussion on LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7121084907526713346?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7121084907526713346%2C7121143258256166912%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287121143258256166912%2Curn%3Ali%3Aactivity%3A7121084907526713346%29) Benjamin Ruland and Johannes Schnatterer  
 [^21]: Talk: [Mastering GitOps 2023: Keynote: GitOps Emerging Developments and Predictions](https://vimeo.com/805175348) by Alexis Richardson  
 [^22]: Documentation [Flux | OCI cheatsheet](https://github.com/fluxcd/website/blob/a426979/content/en/flux/cheatsheets/oci-artifacts.md)  
+[^23]: Talk: [GitOpsCon EU 23: The Art of GitOps: Rendered Manifests](https://gitopsconeu2023.sched.com/event/1Unk5/the-art-of-gitops-rendered-manifests-christian-hernandez-akuity?iframe=yes&w=100%&sidebar=yes&bg=no) by Christian Hernandez  
+[^24]: Documentation [Argo CD | Config Management Plugins](https://github.com/argoproj/argo-cd/blob/v2.9.3/docs/operator-manual/config-management-plugins.md)
