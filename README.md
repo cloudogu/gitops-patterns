@@ -184,19 +184,19 @@ For promotion, we see different sets of patterns:
   * Where to render the manifests?
     * On the CI Server (**Rendered Manifests Pattern**[^23]) <span id="rendered-manifests"/>  
       This pattern also fits nicely with Flux's OCI artifacts feature (see [Config split](#config-split)).
-    * On the GitOps Operator (**native**)
+    * On the GitOps Operator (**GitOps Operator Rendering** or **GitOps Controller Rendering**[^25])
   * Tools: 
     * Kustomize
-      * Plain`kustomization.yaml` - **operator-agnostic** (native on Argo CD and Flux)
-      * ≠ Flux CRD `Kustomization` (native)
+      * Plain`kustomization.yaml` - **operator-agnostic** (GitOps Operator Rendering on Argo CD and Flux)
+      * ≠ Flux CRD `Kustomization` (GitOps Operator Rendering)
       * `kustomize build` / `kubectl kustomize` via CI server (Rendered Manifests)
     * Helm
-      * CRD such as `HelmRelease` (Flux native) or `Application` (ArgoCD native)
+      * CRD such as `HelmRelease` (GitOps Operator Rendering on Flux) or `Application` (GitOps Operator Rendering on ArgoCD)
       * Umbrella Chart[^12] <span id="umbrella-chart"/> (common on Argo CD, possible but unusual on Flux)
       * `helm template` on CI server (Rendered Manifests)
     * Others, e.g. Jsonnet, CueLang, Timoni
       * Rendered Manifests Pattern
-      * Argo CD Config Management Plugins[^24] (JSonnet native)
+      * Argo CD Config Management Plugins[^24] (built-in for JSonnet)
 * **Global Environments** vs **Environment per App**[^3]  <span id="global-vs-env-per-app"/>  
   ![Global Envs](src/svg/global-environments.svg)
   ![Env per app](src/svg/environment-per-app.svg)
@@ -371,3 +371,4 @@ Here are some other examples that we haven't had a chance to look at in more det
 [^22]: Documentation [Flux | OCI cheatsheet](https://github.com/fluxcd/website/blob/a426979/content/en/flux/cheatsheets/oci-artifacts.md)  
 [^23]: Talk: [GitOpsCon EU 23: The Art of GitOps: Rendered Manifests](https://gitopsconeu2023.sched.com/event/1Unk5/the-art-of-gitops-rendered-manifests-christian-hernandez-akuity?iframe=yes&w=100%&sidebar=yes&bg=no) by Christian Hernandez  
 [^24]: Documentation [Argo CD | Config Management Plugins](https://github.com/argoproj/argo-cd/blob/v2.9.3/docs/operator-manual/config-management-plugins.md)
+[^25]: [Discussion on LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7138481326424276992?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7138481326424276992%2C7138548943428194304%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287138548943428194304%2Curn%3Ali%3Aactivity%3A7138481326424276992%29)  Christian Hernandez, Scott Rigby and Johannes Schnatterer  
