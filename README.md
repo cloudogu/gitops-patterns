@@ -81,7 +81,7 @@ PRs welcome!
   </tr>
   <tr>
     <td><img width="50px" src="https://cloudogu.com/assets/blog/2023/gitops-patterns-6_150x150-fdb06341511e6699307a4f913b9d5635cbaefa432029c468c58476d5c6108485a8f50ce68202a5baf92743ae1e9388243bec81cd206de2bc40c647612b46318f.png" alt="article icon"/></td>
-    <td><a href="https://cloudogu.com/de/blog/gitops-repository-patterns-part-6-examples">Part 6️⃣: Example Repositories</a></td>
+    <td><a href="https://cloudogu.com/en/blog/gitops-repository-patterns-part-6-examples">Part 6️⃣: Example Repositories</a></td>
   </tr>
 </table>
 
