@@ -11,8 +11,6 @@ and our [GitOps trainings for both Flux and ArgoCD](https://platform.cloudogu.co
 
 You can read more about the patterns in [this series of articles](#articles).
 
-For questions or suggestions, you are welcome to join us at our [community forum](https://community.cloudogu.com/c/gitops/23).
-
 [![Discuss it on myCloudogu](https://static.cloudogu.com/static/images/discuss-it.png)](https://community.cloudogu.com/c/gitops/23)
 
 PRs welcome!
