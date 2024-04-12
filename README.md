@@ -178,7 +178,9 @@ For promotion, we see different sets of patterns:
 #### Implementation
 
 * **Configuration Management** <span id="config-management"/>  
-  Synonyms: Templating, Patching, Overlay, Rendering
+  * Synonyms:
+    * General: Templating, Patching, Overlay, Rendering, Hydrating
+    * templates = dry; rendered = hydrated [^26]
   * Where to render the manifests?
     * On the CI Server (**Rendered Manifests Pattern**[^23]) <span id="rendered-manifests"/>  
       This pattern also fits nicely with Flux's OCI artifacts feature (see [Config split](#config-split)).
@@ -370,3 +372,4 @@ Here are some other examples that we haven't had a chance to look at in more det
 [^23]: Talk: [GitOpsCon EU 23: The Art of GitOps: Rendered Manifests](https://gitopsconeu2023.sched.com/event/1Unk5/the-art-of-gitops-rendered-manifests-christian-hernandez-akuity?iframe=yes&w=100%&sidebar=yes&bg=no) by Christian Hernandez  
 [^24]: Documentation [Argo CD | Config Management Plugins](https://github.com/argoproj/argo-cd/blob/v2.9.3/docs/operator-manual/config-management-plugins.md)
 [^25]: [Discussion on LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7138481326424276992?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7138481326424276992%2C7138548943428194304%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287138548943428194304%2Curn%3Ali%3Aactivity%3A7138481326424276992%29)  Christian Hernandez, Scott Rigby and Johannes Schnatterer  
+[^26]: [Discussion on GitHub](https://github.com/argoproj/argo-cd/pull/17506#discussion_r1525548738)  Michael Crenshaw 
