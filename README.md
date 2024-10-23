@@ -238,11 +238,12 @@ The diagrams have been created with [tree2svg](https://github.com/schnatterer/tr
 * Boostrapping: `Helm`, `kubectl`
 * Linking: ArgoCD `Application`
 * **Features**:
-  * Env per app Pattern
   * Operate ArgoCD with GitOps
-  * Config Update via CI server
+  * Solution for cross-cutting infra (cluster resources)
+  * Multi-tenancy: Single operator manages multiple tenants on one cluster using namespace environments (multi-cluster possible)
   * Mixed repo patterns
-  * ArgoCD **and** Flux examples
+  * Config Update and Config Replication via CI server (Rendered Manifest using Helm)
+  * Env per app Pattern
 
 ![](src/repo-examples/2-with-ci.svg)
 
@@ -257,9 +258,9 @@ The diagrams have been created with [tree2svg](https://github.com/schnatterer/tr
 * **Boostrapping**: `argocd-autopilot`
 * Linking: `kustomization.yaml`, ArgoCD `Application`, `ApplicationSet`
 * Features:
+  * Create structure and YAML via CLI
   * Operate ArgoCD with GitOps
-  * In the future: a lot more automation
-    and YAML creation
+  * Solution for cross-cutting infra (cluster resources)
 
 ![](src/repo-examples/3.svg)
 
@@ -273,7 +274,9 @@ The diagrams have been created with [tree2svg](https://github.com/schnatterer/tr
 * **Operator**: Flux
 * **Boostrapping**: `flux` CLI
 * **Linking**: `kustomization.yaml`, Flux `Kustomization`
-* **Features**: cross-cutting infra
+* **Features**: 
+  * Operate Flux with GitOps
+  * Solution for cross-cutting infra (cluster resources)
 
 ![](src/repo-examples/4.svg)
 
@@ -287,7 +290,10 @@ The diagrams have been created with [tree2svg](https://github.com/schnatterer/tr
 * **Operator**: Flux
 * **Boostrapping**: `flux` CLI
 * **Linking**: `kustomization.yaml`, Flux `Kustomization`
-* **Features**: cross-cutting infra
+* **Features**:
+  * Operate Flux with GitOps
+  * Solution for cross-cutting infra (cluster resources)
+  * Multi-tenancy: One operator per cluster environment manages multiple tenants
 
 ![](src/repo-examples/5.svg)
 
