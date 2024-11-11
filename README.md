@@ -50,6 +50,7 @@ PRs welcome!
   - [Flux repo per team/tenant](#flux-repo-per-teamtenant)
   - [📕 Path to GitOps examples](#-path-to-gitops-examples)
   - [Environment variations](#environment-variations)
+  - [Multiple AppSets](#multiple-appsets)
   - [Others](#others)
 - [Synonyms](#synonyms)
 - [References](#references)
@@ -261,6 +262,7 @@ The diagrams have been created with [tree2svg](https://github.com/schnatterer/tr
   * Create structure and YAML via CLI
   * Operate ArgoCD with GitOps
   * Solution for cross-cutting infra (cluster resources)
+  * Env per app Pattern
 
 ![](src/repo-examples/3.svg)
 
@@ -308,7 +310,7 @@ The diagrams have been created with [tree2svg](https://github.com/schnatterer/tr
 
 * **Repo pattern**: Monorepo
 * **Operator pattern**: Instance per Cluster
-* **Operator**: [ArgoCD] [flux]
+* **Operator**: Argo CD, Flux
 * **Boostrapping**: kubectl
 * **Linking**: `kustomization.yaml`,
   * ArgoCD `Application`, `ApplicationSet` /
@@ -316,6 +318,7 @@ The diagrams have been created with [tree2svg](https://github.com/schnatterer/tr
 * **Features**:
   * Cross-cutting infra and app(s)
   * ArgoCD **and** Flux examples
+  * Env per app Pattern
 
 ![](src/repo-examples/6.svg)
 
@@ -324,12 +327,27 @@ The diagrams have been created with [tree2svg](https://github.com/schnatterer/tr
 
 [kostis-codefresh/gitops-environment-promotion](https://github.com/kostis-codefresh/gitops-environment-promotion)
 
-* Operator: ArgoCD  (Flux)
-* Features:
-  * Env variants for a single app
+* **Operator**: ArgoCD (Flux)
+* **Linking**: `kustomization.yaml`
+* **Features**:
+  * Env variants for single app
   * Promotion "via cp"
+  * Env per app Pattern
 
 ![](src/repo-examples/7.svg)
+
+### Multiple AppSets
+
+[kostis-codefresh/many-appsets-demo](https://github.com/kostis-codefresh/many-appsets-demo)
+
+* **Operator**: Argo CD
+* Linking: `kustomization.yaml`, Argo CD `ApplicationSet`, (`Application`)
+* **Features**:
+  * Env variants for multiple apps with few appSets
+  * Promotion "via cp"
+  * Env per app Pattern
+
+![](src/repo-examples/8.svg)
 
 ### Others
 
