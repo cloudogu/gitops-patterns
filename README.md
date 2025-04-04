@@ -353,6 +353,7 @@ The diagrams have been created with [tree2svg](https://github.com/schnatterer/tr
 
 Here are some other examples that we haven't had a chance to look at in more detail:
 
+* [onedr0p/cluster-template](https://github.com/onedr0p/cluster-template) (example: [onedr0p/home-ops](https://github.com/onedr0p/home-ops)- A famous mono repo that hosts everything to boostrap a plain k8s cluster with many cluster resources using Flux
 * [Lp-Francois/argocd-multi-tenancy](https://github.com/Lp-Francois/argocd-multi-tenancy) 
 
 ## Synonyms
